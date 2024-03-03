@@ -1,0 +1,135 @@
+/* 초기화 */
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #C4DFF3;
+}
+
+/* header 스타일 */
+.header_blue {
+  background-color: #C4DFF3;
+  width: 100%;
+  height: 10px;
+}
+
+.title{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  background-color: black;
+  height: 140px;
+}
+
+.title h1 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Jolly Lodger', system-ui;
+  text-align: center;
+  font-size: 85px;
+  margin-right: 400px;
+  color: #C4DFF3;
+}
+
+.button{
+  border-radius: 10px;
+  background-color:#C4DFF3;
+  width:105px;
+  height:50px;
+  font-size: 18px;
+  font-family: "Poor Story", system-ui;
+}
+
+#logout_btn{
+  margin-right: 20px;
+}
+
+#mypage_btn{
+  margin-right:50px;
+}
+
+.menu {
+  background-color: black;
+  width: 100%;
+  height: 50px;
+  font-family: "Poor Story", system-ui;
+  font-size: 20px;
+  overflow: hidden;
+  text-align: center; 
+}
+
+.menu a {
+  display: inline-block;
+  color:#C4DFF3;
+  text-align: center;
+  align-items: center;
+  padding-top: 12px;
+  text-decoration: none;
+  width: 350px;
+  height: 50px;
+}
+
+.menu a:hover {
+  background-color:#C4DFF3;
+  color: black;
+}
+
+.diary-form {
+  max-width: 900px;
+  height:740px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: aliceblue;
+  font-family: "Poor Story", system-ui;
+  font-size:20px;
+}
+
+input[type="date"], select, input[type="text"], textarea {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 3px solid #C4DFF3;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: "Poor Story", system-ui;
+  font-size: 17px;
+  background-color: aliceblue;
+}
+
+textarea {
+  height: 300px;
+  resize: vertical;
+}
+
+#emotion_container{
+  display: flex;
+  align-items: center;
+  }
+
+#emotion_selection{
+  width:82%;
+  height: 100px;
+}
+
+#emotionImage{
+  width:130px;
+  height:130px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+#submit_btn{
+  width:100px;
+  height:45px;
+  font-family: "Poor Story", system-ui;
+  font-size: 18px;
+  background-color:#C4DFF3;
+  color:black;
+  border: none;
+  border-radius: 10px;
+  float:right;
+  margin-bottom: 20px;
+}

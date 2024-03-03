@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/home.css">
+  <title>홈 화면</title>
+
+  <!--폰트 적용-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+   <!--아이콘 적용-->
+   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+
+   <!-- calendar css  -->
+   <style>
+    .calendar {
+      text-align: center;
+      width:600px;
+      font-family: "Poor Story", system-ui;
+      font-size:20px;
+      padding-left:20px;
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      padding-left: 150px;
+      padding-right: 150px;
+    }
+    .calBtn{
+      border:none;
+      width: 50px;
+      font-size: 20px;
+      background-color:#C4DFF3;
+    }
+    .calendar-body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 40px;
+    }
+    .day {
+      padding: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 1px solid #C4DFF3;
+      background-color: white;
+    }
+    .sunday{
+      color: red;
+    }
+    .saturday{
+      color: blue;
+    }
+  
+    .day:nth-child(7n+1) {
+      color: red;
+    }
+    .day:nth-child(7n) {
+      color: blue;
+    }
+    .day.other-month {
+      color: #ccc;
+    }
+    .today {
+      background-color:lightcyan;
+    }
+    .other-month {
+      color: #ccc;
+    }
+  </style>
+
+</head>
+
+<body>
+<!-- 헤더 부분 -->
+<div class="title">
+  <h1>PSYLOG</h1>
+  <button class="button" id="logout_btn" onclick="location.href='start.html'">로그아웃 <i class="fa-solid fa-right-from-bracket"></i></button>
+  <button class="button" id="mypage_btn" onclick="location.href='my_page.html'">My Page <i class="fa-solid fa-user"></i></button>
+</div>
+<div class="header_blue"></div>
+
+<!-- 메뉴바 -->
+<div class="menu">
+  <a href="home.html">홈 <i class="fa-solid fa-house"></i></a>
+  <a href="write.html">일기 작성 <i class="fa-solid fa-pen"></i></a>
+  <a href="my_diary.html">My 일기장 <i class="fa-solid fa-list-ul"></i></a>
+</div>
+
+<div class="box">
+  <!-- calendar -->
+  <div class="calendar">
+    <div class="calendar-header">
+      <button class="calBtn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+      <h2 id="currentMonthYear"></h2>
+      <button class="calBtn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <div id="calendarBody" class="calendar-body"></div>
+  </div>
+
+  <!-- new log -->
+  <div class="newlog">
+
+    <h3>New Log</h3>
+  <div id="container">
+    <div class="log">
+      <div class="content">
+        <span id="log_title">제목</span><br>
+        <span id="log_date">2024.02.19 월요일</span>
+      </div>
+      <img id="img" src="/images/기쁨이.png">
+    </div>
+    <div class="log">
+      <div class="content">
+        <span id="log_title">제목</span><br>
+        <span id="log_date">2024.02.20 화요일</span>
+      </div>
+      <img id="img" src="/images/불안이.png">
+    </div>
+    <div class="log">
+      <div class="content">
+        <span id="log_title">제목</span><br>
+        <span id="log_date">2024.02.21 수요일</span>
+      </div>
+      <img id="img" src="/images/설렘이.png">
+    </div>
+    <div class="log">
+      <div class="content">
+        <span id="log_title">제목</span><br>
+        <span id="log_date">2024.02.22 목요일</span>
+      </div>
+      <img id="img" src="/images/슬픔이.png">
+    </div>
+    <div class="log">
+      <div class="content">
+        <span id="log_title">제목</span><br>
+        <span id="log_date">2024.02.23 금요일</span>
+      </div>
+      <img id="img" src="/images/화남이.png">
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- calendar js -->
+<script>
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const currentMonthYear = document.getElementById("currentMonthYear");
+  const calendarBody = document.getElementById("calendarBody");
+
+  let currentDate = new Date();
+  let currentMonth = currentDate.getMonth();
+  let currentYear = currentDate.getFullYear();
+
+  function generateCalendar(month, year) {
+    currentMonthYear.textContent = `${year}년 ${month + 1}월`;
+
+    let startDate = new Date(year, month, 1);
+    let endDate = new Date(year, month + 1, 0);
+
+    calendarBody.innerHTML = "";
+
+    // Displaying the days of the week
+    const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+    for (let day of daysOfWeek) {
+      const dayElement = document.createElement("div");
+      dayElement.classList.add("day");
+      if (day === "일") {
+        dayElement.classList.add("sunday");
+      } else if (day === "토") {
+        dayElement.classList.add("saturday");
+      }
+      dayElement.textContent = day;
+      calendarBody.appendChild(dayElement);
+    }
+
+    // Filling in previous month's days if necessary
+    for (let i = startDate.getDay(); i > 0; i--) {
+      const dayElement = document.createElement("div");
+      dayElement.classList.add("day", "other-month");
+      dayElement.textContent = new Date(year, month, -i+1).getDate();
+      calendarBody.appendChild(dayElement);
+    }
+
+    // Displaying the days of the current month
+    for (let i = 1; i <= endDate.getDate(); i++) {
+      const dayElement = document.createElement("div");
+      dayElement.classList.add("day");
+      if (year === currentDate.getFullYear() && month === currentDate.getMonth() && i === currentDate.getDate()) {
+        dayElement.classList.add("today");
+      }
+      dayElement.textContent = i;
+      calendarBody.appendChild(dayElement);
+    }
+
+    // Filling in next month's days if necessary
+    for (let i = 1; i < 7 - endDate.getDay(); i++) {
+      const dayElement = document.createElement("div");
+      dayElement.classList.add("day", "other-month");
+      dayElement.textContent = new Date(year, month + 1, i).getDate();
+      calendarBody.appendChild(dayElement);
+    }
+  }
+
+  generateCalendar(currentMonth, currentYear);
+
+  prevBtn.addEventListener("click", () => {
+    currentMonth--;
+    if (currentMonth === -1) {
+      currentYear--;
+      currentMonth = 11;
+    }
+    generateCalendar(currentMonth, currentYear);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentMonth++;
+    if (currentMonth === 12) {
+      currentYear++;
+      currentMonth = 0;
+    }
+    generateCalendar(currentMonth, currentYear);
+  });
+</script>
+
+
+
+
+</body>
+</html>

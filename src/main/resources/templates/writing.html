@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/writing.css">
+  <title>작성한 글 화면</title>
+
+  <!--폰트 적용-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+   <!--아이콘 적용-->
+   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<!-- 헤더 부분 -->
+<div class="title">
+  <h1>PSYLOG</h1>
+  <button class="button" id="logout_btn" onclick="location.href='start.html'">로그아웃 <i class="fa-solid fa-right-from-bracket"></i></button>
+  <button class="button" id="mypage_btn" onclick="location.href='my_page.html'">My Page <i class="fa-solid fa-user"></i></button>
+</div>
+<div class="header_blue"></div>
+
+<!-- 메뉴바 -->
+<div class="menu">
+  <a href="home.html">홈 <i class="fa-solid fa-house"></i></a>
+  <a href="write.html">일기 작성 <i class="fa-solid fa-pen"></i></a>
+  <a href="my_diary.html">My 일기장 <i class="fa-solid fa-list-ul"></i></a>
+</div>
+
+<!-- 일기 작성된 칸 -->
+<div class="diary-form">
+  
+
+      <label for="date">날짜:</label>
+      <input type="date" id="date" name="date" required readonly>
+
+      <div id="emotion_container">
+        <div id="emotion_selection">
+          <label for="emotion">기분:<br></label>
+          <select id="emotion" name="emotion" required onchange="displayImage()" disabled>
+            <option value="">== 오늘의 기분을 선택하세요 ==</option>
+            <option value="happy">신나고 기뻐요😄</option>
+            <option value="excited">두근거리고 설레요😍</option>
+            <option value="sad">슬프고 우울해요😭</option>
+            <option value="disappointed">좌절... 되는게 없어요😞</option>
+            <option value="angry">짜증나고 화가나요😡</option>
+            <option value="afraid">불안하고 두려워요😱</option>
+          </select><br>
+        </div>
+        <img id="emotionImage" src="images/투명배경.png">
+      </div>
+
+      <label for="diary_title">일기 제목:</label>
+      <input type="text" id="diary_title" name="diary_title" style="margin-bottom: 30px;" required readonly>
+
+      <label for="content">일기 내용:</label>
+      <textarea id="content" name="content" readonly></textarea>
+      <div>
+        <button id="diary_btn" style="width:100px;"><b>수정하기</b></button>
+        <button id="diary_btn" style="width:170px; margin-right: 10px;"><i class="fa-solid fa-angles-right"></i>  <b>감정 분석 보러가기</b></button>
+      </div>
+</div>
+
+<script>
+
+  //선택한 감정 캐릭터를 보여주는 함수
+  function displayImage() {
+    var selectBox = document.getElementById("emotion");
+    var selectedValue = selectBox.value;
+    var imageElement = document.getElementById("emotionImage");
+    if (selectedValue === "happy") {
+      imageElement.src = "images/기쁨이.png";
+    } else if (selectedValue === "excited") {
+      imageElement.src = "images/설렘이.png";
+    } else if (selectedValue === "sad") {
+      imageElement.src = "images/슬픔이.png";
+    } else if (selectedValue === "disappointed") {
+      imageElement.src = "images/좌절이.png";
+    } else if (selectedValue === "angry") {
+      imageElement.src = "images/화남이.png";
+    } else if (selectedValue === "afraid") {
+      imageElement.src = "images/불안이.png";
+    } else {
+      // 투명 이미지(감정 선택을 하지 않은 경우)
+      imageElement.src = "images/투명배경.png";
+    }
+  }
+
+</script>
+
+</body>
+</html>

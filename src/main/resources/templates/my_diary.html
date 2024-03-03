@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/my_diary.css">
+  <title>내 일기장 화면</title>
+
+  <!--폰트 적용-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+   <!--아이콘 적용-->
+   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<!-- 헤더 부분 -->
+<div class="title">
+  <h1>PSYLOG</h1>
+  <button class="button" id="logout_btn" onclick="location.href='start.html'">로그아웃 <i class="fa-solid fa-right-from-bracket"></i></button>
+  <button class="button" id="mypage_btn" onclick="location.href='my_page.html'">My Page <i class="fa-solid fa-user"></i></button>
+</div>
+<div class="header_blue"></div>
+
+<!-- 메뉴바 -->
+<div class="menu">
+  <a href="home.html">홈 <i class="fa-solid fa-house"></i></a>
+  <a href="write.html">일기 작성 <i class="fa-solid fa-pen"></i></a>
+  <a href="my_diary.html">My 일기장 <i class="fa-solid fa-list-ul"></i></a>
+</div>
+
+<div class="box">
+  <!-- 사용법 -->
+  <div class="select_date">
+    <div id="select_date_title">
+      <b>My 일기장 사용법</b>
+    </div>
+    <div id="explaination">
+      <i class="fa-solid fa-pen"></i> 일별로 보기<br>
+      날짜를 선택하고 하단의 해당 날짜 Log보기 버튼을 눌러주세요<br>
+      오른쪽에서 해당 날짜에 작성된 Log를 확인할 수 있어요<br><br>
+
+      <i class="fa-solid fa-pen"></i> 월별로 보기<br>
+      하단의 해당 달 Log 모아보기 버튼을 누르면 선택한 날짜의<br>
+      달에 작성된 Log들을 모아서 볼 수 있어요
+    </div>
+    
+    <form action="#" method="post">
+      <div id="submit_date">
+        <label for="date" style="float: left;">날짜:</label>
+        <input type="date" id="date" name="date" required>
+        <button class="submit_btn" type="submit">해당 날짜 Log 보기</button>
+        <button class="submit_btn" type="submit">해당 달 Log 모아보기</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- My log -->
+  <div class="newlog">
+
+    <h3>My Log</h3>
+    <div id="container">
+      <div class="log">
+        <div class="content">
+          <span id="log_title">제목</span><br>
+          <span id="log_date">2024.02.19 월요일</span>
+        </div>
+        <img id="img" src="images/기쁨이.png">
+      </div>
+      <div class="log">
+        <div class="content">
+          <span id="log_title">제목</span><br>
+          <span id="log_date">2024.02.20 화요일</span>
+        </div>
+        <img id="img" src="images/불안이.png">
+      </div>
+      <div class="log">
+        <div class="content">
+          <span id="log_title">제목</span><br>
+          <span id="log_date">2024.02.21 수요일</span>
+        </div>
+        <img id="img" src="images/설렘이.png">
+      </div>
+      <div class="log">
+        <div class="content">
+          <span id="log_title">제목</span><br>
+          <span id="log_date">2024.02.22 목요일</span>
+        </div>
+        <img id="img" src="images/슬픔이.png">
+      </div>
+      <div class="log">
+        <div class="content">
+          <span id="log_title">제목</span><br>
+          <span id="log_date">2024.02.23 금요일</span>
+        </div>
+        <img id="img" src="images/화남이.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 현재 날짜를 가져오는 함수
+  function getCurrentDate() {
+       var today = new Date();
+       var dd = String(today.getDate()).padStart(2, '0');
+       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+       var yyyy = today.getFullYear();
+ 
+       today = yyyy + '-' + mm + '-' + dd;
+       return today;
+   }
+ 
+   // 페이지 로드 시 현재 날짜 이후의 날짜들을 선택할 수 없도록 설정
+   window.onload = function () {
+       var today = new Date().toISOString().split('T')[0];
+       document.getElementById('date').setAttribute('max', today);
+   };
+</script>
+
+</body>
+</html>
