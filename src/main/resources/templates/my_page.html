@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/my_page.css">
+  <link rel="stylesheet" href="/css/my_page.css">
   <title>마이 페이지 화면</title>
 
   <!--폰트 적용-->
@@ -20,7 +20,7 @@
 <!-- 헤더 부분 -->
 <div class="title">
   <h1>PSYLOG</h1>
-  <button class="button" id="logout_btn" onclick="location.href='start.html'">로그아웃 <i class="fa-solid fa-right-from-bracket"></i></button>
+  <button class="button" id="logout_btn" onclick="location.href='/logout'">로그아웃 <i class="fa-solid fa-right-from-bracket"></i></button>
 </div>
 <div class="header_blue"></div>
 
@@ -42,7 +42,7 @@
 <script>
   // div를 클릭하면 다른 페이지로 이동하는 함수
   document.getElementById("mem_info_change").addEventListener("click", function() {
-      window.location.href = "mem_info_change.html";
+      window.location.href = "/member/mypage/edit";
   });
 </script>
 

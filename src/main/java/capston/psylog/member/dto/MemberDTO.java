@@ -11,13 +11,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class MemberDTO {
-    private Long memberId;
+    private Long memberNo;
+    private String memberId;
     private String memberPassword;
     private String memberNickname;
     private String memberEmail;
 
+    //private String confirmPassword;
+
     public static MemberDTO toMemberDTO(MemberEntity memberEntity) {
         MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMemberNo(memberEntity.getMemberNo());
         memberDTO.setMemberId(memberEntity.getMemberId());
         memberDTO.setMemberEmail(memberEntity.getMemberEmail());
         memberDTO.setMemberPassword(memberEntity.getMemberPassword());

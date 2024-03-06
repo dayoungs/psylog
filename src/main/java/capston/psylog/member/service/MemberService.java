@@ -12,6 +12,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+
     public void save(MemberDTO memberDTO) {
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberDTO);
         memberRepository.save(memberEntity);
@@ -36,5 +37,17 @@ public class MemberService {
             // 조회 결과가 없다(해당 아이디를 가진 회원이 없다)
             return null;
         }
+    }
+
+    public MemberDTO findById(String id) {
+       Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberId(id);
+       if (optionalMemberEntity.isPresent()){
+           return MemberDTO.toMemberDTO(optionalMemberEntity.get());
+       }
+       else return null;
+    }
+
+    public void update(MemberDTO memberDTO){
+        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
     }
 }
