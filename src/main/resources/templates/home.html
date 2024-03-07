@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,9 +88,9 @@
 
 <!-- 메뉴바 -->
 <div class="menu">
-  <a href="home.html">홈 <i class="fa-solid fa-house"></i></a>
-  <a href="write.html">일기 작성 <i class="fa-solid fa-pen"></i></a>
-  <a href="my_diary.html">My 일기장 <i class="fa-solid fa-list-ul"></i></a>
+  <a href="/login_home">홈 <i class="fa-solid fa-house"></i></a>
+  <a href="/post/save">일기 작성 <i class="fa-solid fa-pen"></i></a>
+  <a href="/post/list">My 일기장 <i class="fa-solid fa-list-ul"></i></a>
 </div>
 
 <div class="box">
@@ -106,45 +106,34 @@
 
   <!-- new log -->
   <div class="newlog">
-
-    <h3>New Log</h3>
+  <h3>New Log</h3>
   <div id="container">
-    <div class="log">
-      <div class="content">
-        <span id="log_title">제목</span><br>
-        <span id="log_date">2024.02.19 월요일</span>
-      </div>
-      <img id="img" src="/images/기쁨이.png">
-    </div>
-    <div class="log">
-      <div class="content">
-        <span id="log_title">제목</span><br>
-        <span id="log_date">2024.02.20 화요일</span>
-      </div>
-      <img id="img" src="/images/불안이.png">
-    </div>
-    <div class="log">
-      <div class="content">
-        <span id="log_title">제목</span><br>
-        <span id="log_date">2024.02.21 수요일</span>
-      </div>
-      <img id="img" src="/images/설렘이.png">
-    </div>
-    <div class="log">
-      <div class="content">
-        <span id="log_title">제목</span><br>
-        <span id="log_date">2024.02.22 목요일</span>
-      </div>
-      <img id="img" src="/images/슬픔이.png">
-    </div>
-    <div class="log">
-      <div class="content">
-        <span id="log_title">제목</span><br>
-        <span id="log_date">2024.02.23 금요일</span>
-      </div>
-      <img id="img" src="/images/화남이.png">
-    </div>
-  </div>
+    <th:block th:each="post: ${postList}">
+      <div class="log">
+          <div class="content">
+              <a th:href="@{|/post/${post.postNo}|}"><span id="log_title" th:text="${post.postTitle}"></span></a><br>
+            <span id="log_date" th:text="${post.postDate}"></span>
+          </div>
+          <th:block th:if="${post.postEmotion == 'happy'}">
+            <img id="img1" src="/images/기쁨이.png">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'excited'}">
+            <img id="img2" src="/images/설렘이.png">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'sad'}">
+            <img id="img3" src="/images/슬픔이.png">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'disappointed'}">
+            <img id="img4" src="/images/좌절이.png">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'angry'}">
+            <img id="img5" src="/images/화남이.png">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'afraid'}">
+            <img id="img6" src="/images/불안이.png">
+          </th:block>
+        </div>
+    </th:block>
   </div>
 </div>
 

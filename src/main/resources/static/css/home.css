@@ -117,7 +117,7 @@ body{
   background-color:aliceblue;
 }
 
-#img{
+#img1, #img2, #img3, #img4, #img5, #img6{
   width: 125px;
   height:125px;
   margin-left: auto; /* 이미지를 오른쪽으로 밀어넣음 */

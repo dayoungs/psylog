@@ -99,6 +99,28 @@ input[type="date"], select, input[type="text"], textarea {
   background-color: aliceblue;
 }
 
+.data {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 3px solid #C4DFF3;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: "Poor Story", system-ui;
+  font-size: 17px;
+  background-color: aliceblue;
+
+}
+
+#img1, #img2, #img3, #img4, #img5, #img6{
+  width: 125px;
+  height:125px;
+  margin-left: auto; /* 이미지를 오른쪽으로 밀어넣음 */
+  margin-right: 40px;
+  margin-top: 25px;
+}
+
 textarea {
   height: 300px;
   resize: vertical;

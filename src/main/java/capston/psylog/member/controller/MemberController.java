@@ -3,6 +3,8 @@ package capston.psylog.member.controller;
 import capston.psylog.member.dto.MemberDTO;
 import capston.psylog.member.entity.MemberEntity;
 import capston.psylog.member.service.MemberService;
+import capston.psylog.post.dto.PostDTO;
+import capston.psylog.post.service.PostService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -46,7 +50,7 @@ public class MemberController {
         if (loginResult != null) {
             // login 성공
             session.setAttribute("loginId", loginResult.getMemberId());
-            return "home";
+            return "redirect:/login_home";
         } else {
             // login 실패
             return "login";
