@@ -21,8 +21,8 @@ spring:
     hibernate:
       ddl-auto: update
 
-gpt:
-  model: gpt-3.5-turbo
-  api:
-    key: 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
-    url: https://api.openai.com/v1/chat/completions
+#gpt:
+#  model: gpt-3.5-turbo
+#  api:
+#    key:
+#    url: https://api.openai.com/v1/chat/completions

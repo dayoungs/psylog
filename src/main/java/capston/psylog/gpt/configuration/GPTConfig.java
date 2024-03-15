@@ -17,7 +17,7 @@ public class GPTConfig {
         template.getInterceptors().add((request, body, execution) -> {
             request.getHeaders().add(
                     "Authorization",
-                    "Bearer " + apiKey);
+                    "Bearer " +apiKey);
             return execution.execute(request, body);
         });
     return template;
