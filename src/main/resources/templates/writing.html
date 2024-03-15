@@ -64,7 +64,7 @@
     <label for="content">일기 내용:</label>
     <textarea id="content" th:text="${post.postContent}" name="content" readonly></textarea>
 
-    <button id="diary_btn" style="width:100px;"><b>수정하기</b></button>
+    <a th:href="@{|/post/${post.postNo}|}"><button id="diary_btn" style="width:100px;"><b>수정하기</b></button></a>
     <button id="diary_btn" style="width:170px; margin-right: 10px;"><i class="fa-solid fa-angles-right"></i>  <b>감정 분석 보러가기</b></button>
 
 </div>

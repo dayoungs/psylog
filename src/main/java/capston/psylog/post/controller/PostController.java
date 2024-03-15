@@ -50,4 +50,18 @@ public class PostController {
         model.addAttribute("post", postDTO);
         return "writing";
     }
+
+    @GetMapping("/post/update/{postNo}")
+    public String updateForm(@PathVariable Long postNo, Model model){
+        PostDTO postDTO = postService.findById(postNo);
+        model.addAttribute("postUpdate", postDTO);
+        return "redirect:/post/{postNo}";
+    }
+
+    @PostMapping("/post/update")
+    public String update(@ModelAttribute PostDTO postDTO, Model model){
+        PostDTO post = postService.update(postDTO);
+        model.addAttribute("post", post);
+        return "redirect:/post/{postNo}";
+    }
 }
