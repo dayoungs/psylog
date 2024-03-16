@@ -36,4 +36,14 @@ public class PostEntity extends BaseEntity{
         postEntity.setPostContent(postDTO.getPostContent());
         return postEntity;
     }
+
+    public static PostEntity toUpdateEntity(PostDTO postDTO) {
+        PostEntity postEntity = new PostEntity();
+        postEntity.setPostNo(postDTO.getPostNo());
+        postEntity.setPostWriter(postDTO.getPostWriter());
+        postEntity.setPostEmotion(postDTO.getPostEmotion());
+        postEntity.setPostTitle(postDTO.getPostTitle());
+        postEntity.setPostContent(postDTO.getPostContent());
+        return postEntity;
+    }
 }

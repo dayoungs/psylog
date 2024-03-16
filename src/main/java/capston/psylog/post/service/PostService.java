@@ -24,7 +24,6 @@ public class PostService {
         List<PostEntity> postEntityList = postRepository.findByPostWriter(id);
         List<PostDTO> postDTOList = new ArrayList<>();
         for (PostEntity postEntity: postEntityList) {
-            System.out.println("#####postEntity = " + postEntity);
             postDTOList.add(PostDTO.toPostDTO(postEntity));
         }
         return postDTOList;
@@ -39,5 +38,11 @@ public class PostService {
         } else{
             return null;
         }
+    }
+
+    public PostDTO update(PostDTO postDTO) {
+        PostEntity postEntity = PostEntity.toUpdateEntity(postDTO);
+        postRepository.save(postEntity);
+        return findById(postDTO.getPostNo());
     }
 }

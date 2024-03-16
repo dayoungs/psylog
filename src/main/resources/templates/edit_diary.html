@@ -34,15 +34,16 @@
 
 <!-- 일기 작성 칸 -->
 <div class="diary-form">
-    <form action="/post/save" method="post">
-        <input type="hidden" name="postWriter"><br>
+    <form action="/post/update" method="post" name="updateForm">
+        <input type="hidden" name="postNo" th:value="${postUpdate.postNo}"><br>
+        <input type="hidden" name="postWriter" th:value="${postUpdate.postWriter}"><br>
         <label for="date">날짜:</label>
-        <input type="date" id="date" name="postDate" required>
+        <input type="date" id="date" name="updateDate" th:value="${postUpdate.updateDate}" required>
 
         <div id="emotion_container">
             <div id="emotion_selection">
                 <label for="emotion">기분:<br></label>
-                <select id="emotion" name="postEmotion" required onchange="displayImage()">
+                <select id="emotion" name="postEmotion" th:select="${postUpdate.postEmotion}" required onchange="displayImage()">
                     <option value="">== 오늘의 기분을 선택하세요 ==</option>
                     <option value="happy">신나고 기뻐요😄</option>
                     <option value="excited">두근거리고 설레요😍</option>
@@ -56,10 +57,10 @@
         </div>
 
         <label for="diary_title">일기 제목:</label>
-        <input type="text" id="diary_title" name="postTitle" style="margin-bottom: 30px;" required>
+        <input type="text" id="diary_title" name="postTitle" style="margin-bottom: 30px;" th:value="${postUpdate.postTitle}" required>
 
         <label for="content">일기 내용:</label>
-        <textarea id="content" name="postContent"></textarea>
+        <textarea id="content" name="postContent" th:text="${postUpdate.postContent}" ></textarea>
 
         <button id="submit_btn" type="submit"><b>일기 저장</b></button>
     </form>
