@@ -40,9 +40,10 @@ public class PostService {
         }
     }
 
-    public PostDTO update(PostDTO boardDTO) {
-        PostEntity postEntity = PostEntity.toUpdateEntity(boardDTO);
+
+    public PostDTO update(PostDTO postDTO) {
+        PostEntity postEntity = PostEntity.toUpdateEntity(postDTO);
         postRepository.save(postEntity);
-        return findById(boardDTO.getPostNo());
+        return findById(postDTO.getPostNo());
     }
 }

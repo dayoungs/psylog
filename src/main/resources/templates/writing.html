@@ -36,7 +36,7 @@
 <div class="diary-form">
 
     날짜:<br>
-    <div class="data" id="date" name="date" th:text="${post.postDate}" readonly></div>
+    <div class="data" id="date" name="date" th:text="${post.updateDate}" readonly></div>
 
     기분:<br>
     <th:block th:if="${post.postEmotion == 'happy'}">
@@ -64,10 +64,23 @@
     <label for="content">일기 내용:</label>
     <textarea id="content" th:text="${post.postContent}" name="content" readonly></textarea>
 
+<<<<<<< HEAD
     <a th:href="@{|/post/${post.postNo}|}"><button id="diary_btn" style="width:100px;"><b>수정하기</b></button></a>
+=======
+    <button onclick="updateReq()" id="diary_btn" style="width:100px;"><b>수정하기</b></button>
+>>>>>>> 0322-dy
     <button id="diary_btn" style="width:170px; margin-right: 10px;"><i class="fa-solid fa-angles-right"></i>  <b>감정 분석 보러가기</b></button>
 
 </div>
 
 </body>
+<script th:incline="javascript">
+    const updateReq = () => {
+        console.log("수정 요청");
+        const id = [[${post.postNo}]];
+        location.href = "/post/update/" + id;
+    }
+
+</script>
+
 </html>

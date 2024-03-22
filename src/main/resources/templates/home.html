@@ -112,7 +112,7 @@
       <div class="log">
           <div class="content">
               <a th:href="@{|/post/${post.postNo}|}"><span id="log_title" th:text="${post.postTitle}"></span></a><br>
-            <span id="log_date" th:text="${post.postDate}"></span>
+            <span id="log_date" th:text="${post.updateDate}"></span>
           </div>
           <th:block th:if="${post.postEmotion == 'happy'}">
             <img id="img1" src="/images/기쁨이.png">

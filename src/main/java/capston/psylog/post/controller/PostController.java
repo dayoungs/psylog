@@ -23,6 +23,7 @@ public class PostController {
     public String save(@ModelAttribute PostDTO postDTO, @SessionAttribute(name = "loginId") String loginId){
         System.out.println("postDTO = " + postDTO);
         postDTO.setPostWriter(loginId);
+        postDTO.setUpdateDate(postDTO.getPostDate());
         postService.save(postDTO);
 
         return "redirect:/login_home";
@@ -51,17 +52,17 @@ public class PostController {
         return "writing";
     }
 
-    @GetMapping("/post/update/{postNo}")
-    public String updateForm(@PathVariable Long postNo, Model model){
-        PostDTO postDTO = postService.findById(postNo);
+    @GetMapping("/post/update/{id}")
+    public String updateForm(@PathVariable Long id, Model model){
+        PostDTO postDTO = postService.findById(id);
         model.addAttribute("postUpdate", postDTO);
-        return "redirect:/post/{postNo}";
+        return "edit_diary";
     }
 
     @PostMapping("/post/update")
     public String update(@ModelAttribute PostDTO postDTO, Model model){
         PostDTO post = postService.update(postDTO);
         model.addAttribute("post", post);
-        return "redirect:/post/{postNo}";
+        return "writing";
     }
 }
