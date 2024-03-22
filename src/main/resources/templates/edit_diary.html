@@ -43,7 +43,7 @@
         <div id="emotion_container">
             <div id="emotion_selection">
                 <label for="emotion">기분:<br></label>
-                <select id="emotion" name="postEmotion" th:select="${postUpdate.postEmotion}" required onchange="displayImage()">
+                <select id="emotion" name="postEmotion" th:value="${postUpdate.postEmotion}" required onchange="displayImage()">
                     <option value="">== 오늘의 기분을 선택하세요 ==</option>
                     <option value="happy">신나고 기뻐요😄</option>
                     <option value="excited">두근거리고 설레요😍</option>
