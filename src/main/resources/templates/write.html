@@ -83,6 +83,8 @@
       document.getElementById('date').setAttribute('max', today);
   };
 
+ document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+
   const emotion = formData.get('emotion');
     let emotionText = '';
     switch(emotion) {
