@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/mem_info_change.css">
+  <title>회원 정보 수정 화면</title>
+
+  <!--폰트 적용-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+   <!--아이콘 적용-->
+   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="title">
+    <h1>PSYLOG</h1>
+  </div>
+
+  <div class="box">
+  
+    <!-- input box -->
+    <div id="input_box">
+      <div class="box_title"><b>Edit Profile</b></div>
+      <div id="container">
+        <form action="">
+          <h4>Nickname</h4>
+          <input id="nickname" type="text" name="nickname" required />
+
+          <h4>Id</h4>
+          <input id="id" type="text" name="id" value="ewha2024" readonly />
+
+          <h4>Password</h4>
+          <div class="show">
+            <input id="password" type="password" name="password" required/>
+            <i class="fa fa-eye fa-lg" onclick="togglePasswordVisibility()"></i>
+          </div>
+          <!-- 임시 js -->
+          <script>
+              function togglePasswordVisibility() {
+                  var passwordInput = document.getElementById('password');
+                  var eyeIcon = document.querySelector('.show i');
+          
+                  if (passwordInput.type === 'password') {
+                      passwordInput.type = 'text';
+                      eyeIcon.classList.remove('fa-eye');
+                      eyeIcon.classList.add('fa-eye-slash');
+                  } else {
+                      passwordInput.type = 'password';
+                      eyeIcon.classList.remove('fa-eye-slash');
+                      eyeIcon.classList.add('fa-eye');
+                  }
+              }
+          </script>
+
+          <h4>Confirm Password</h4>
+          <input id="confirm_password" type="password" name="confirm_password" required/>
+        
+          <h4>Email</h4>
+          <input id="email" type="text" name="email" required/>
+
+          <div id="btn">
+            <button class="button" id="change_button" type="submit">수정하기</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+     <!-- 로고 -->
+     <div id="logo">
+      <img src="images/로고.png" alt="로고" style="width:400px;">
+    </div>
+  
+  </div>
+
+
+</body>
+</html>
