@@ -20,25 +20,23 @@
 <!-- 헤더 부분 -->
 <div class="title">
   <h1>PSYLOG</h1>
-  <button class="btn1" id="home_btn" onclick="location.href='home.html'">홈</button>
-  <button class="btn1" id="diary_btn" onclick="location.href='my_diary.html'">일기장</button>
-  <button class="btn1" id="myPage_btn" onclick="location.href='my_page.html'">마이 페이지</button>
-  <button class="btn2" id="logOut_btn"  onclick="location.href='start.html'" style="margin-right: 40px;">로그아웃</button>
+  <button class="btn1" id="home_btn" onclick="location.href='/login_home'">홈</button>
+  <button class="btn1" id="diary_btn" onclick="location.href='/post/list'">일기장</button>
+  <button class="btn1" id="myPage_btn" onclick="location.href='/member/mypage'">마이 페이지</button>
+  <button class="btn2" id="logOut_btn"  onclick="location.href='/logout'" style="margin-right: 40px;">로그아웃</button>
 </div>
 
 
 <!-- 일기 작성된 칸 -->
 <div class="diary-form">
-  <label for="date">날짜:</label>
-  <div class="data" id="date" name="date" th:text="${post.updateDate}" readonly></div>
+
+  <div class="data" id="date" name="date" th:text="${post.updateDate}" style="color: #818181" readonly></div>
   <hr>
 
-  <label for="diary_title">일기 제목:</label>
-  <div class="data" th:text="${post.postTitle}" id="diary_title" name="diary_title" style="margin-bottom: 30px;" readonly></div>
+  <div class="data" th:text="${post.postTitle}" id="diary_title" name="diary_title" style="font-size: 30px;" readonly></div>
   <hr>
 
-  <label for="content">일기 내용:</label>
-  <textarea id="content" th:text="${post.postContent}" name="content" readonly></textarea>
+  <div class="data" id="content" th:text="${post.postContent}" name="content" readonly></div>
 
   <hr>
   <div>

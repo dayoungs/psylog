@@ -47,7 +47,7 @@
   font-size:20px;
 }
 
-input[type="date"], select, input[type="text"], textarea {
+input[type="date"], select, input[type="text"]{
   width: 100%;
   margin-top: 10px;
   margin-bottom: 0px;
@@ -59,10 +59,12 @@ input[type="date"], select, input[type="text"], textarea {
   background-color:  white;
 }
 
-textarea {
+#content {
   height: 400px;
   resize: vertical;
   line-height: 30px;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 #fix_btn{
