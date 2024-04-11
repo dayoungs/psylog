@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/my_page.css">
+  <title>마이 페이지 화면</title>
+
+  <!--폰트 적용-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+   <!--아이콘 적용-->
+   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<!-- 헤더 부분 -->
+<div class="title">
+  <h1>PSYLOG</h1>
+  <button class="btn1" id="home_btn" onclick="location.href='home.html'">홈</button>
+  <button class="btn1" id="diary_btn" onclick="location.href='my_diary.html'">일기장</button>
+  <button class="btn1" id="myPage_btn" onclick="location.href='my_page.html'">마이 페이지</button>
+  <button class="btn2" id="writeDiary_btn" onclick="location.href='write.html'">일기 작성</button>
+  <button class="btn2" id="logOut_btn"  onclick="location.href='start.html'" style="margin-right: 40px;">로그아웃</button>
+</div>
+
+<!-- 마이 페이지 메뉴 -->
+<div class="my_page">
+  <div id="my_page_title"><b>My Page</b></div>
+  <div id="mem_info_change" class="my_page_menu">회원 정보 수정</div>
+  <div class="my_page_menu">회원 탈퇴</div>
+  <div class="my_page_menu">공지사항 & 알림</div>
+</div>
+
+<script>
+  // div를 클릭하면 다른 페이지로 이동하는 함수
+  document.getElementById("mem_info_change").addEventListener("click", function() {
+      window.location.href = "mem_info_change.html";
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/write.css">
+  <title>일기 작성 화면</title>
+
+  <!--폰트 적용-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+   <!--아이콘 적용-->
+   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<!-- 헤더 부분 -->
+<div class="title">
+    <h1>PSYLOG</h1>
+    <button class="btn1" id="home_btn" onclick="location.href='/login_home'">홈</button>
+    <button class="btn1" id="diary_btn" onclick="location.href='/post/list'">일기장</button>
+    <button class="btn1" id="myPage_btn" onclick="location.href='/member/mypage'">마이 페이지</button>
+    <button class="btn2" id="writeDiary_btn" onclick="location.href='/post/save'">일기 작성</button>
+    <button class="btn2" id="logOut_btn"  onclick="location.href='/logout'" style="margin-right: 40px;">로그아웃</button>
+</div>
+
+<!-- 일기 작성 칸 -->
+<div class="diary-form">
+  <form action="/post/save" method="post">
+
+      <label for="date">날짜:</label>
+      <input type="date" id="date" name="postDate" required>
+      <hr>
+
+      <label for="diary_title">일기 제목:</label>
+      <input type="text" id="diary_title" name="postTitle" required>
+      <hr>
+
+      <label for="content">일기 내용:</label>
+      <textarea id="content" name="postContent"></textarea>
+      <hr>
+
+      <button id="submit_btn" type="submit"><b>일기 저장</b></button>
+  </form>
+</div>
+
+<script>
+ // 현재 날짜를 가져오는 함수
+ function getCurrentDate() {
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+
+      today = yyyy + '-' + mm + '-' + dd;
+      return today;
+  }
+
+  // 페이지 로드 시 현재 날짜 이후의 날짜들을 선택할 수 없도록 설정
+  window.onload = function () {
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').setAttribute('max', today);
+  };
+</script>
+
+</body>
+</html>
