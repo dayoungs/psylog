@@ -19,10 +19,15 @@ import org.springframework.web.client.RestTemplate;
 
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @Service
 @RequiredArgsConstructor
@@ -42,7 +47,10 @@ public class PostService {
         for (PostEntity postEntity: postEntityList) {
             postDTOList.add(PostDTO.toPostDTO(postEntity));
         }
-        return postDTOList;
+        Comparator<PostDTO> comparingPostNoReverse = Comparator.comparing(PostDTO::getPostNo, Comparator.reverseOrder());
+        List<PostDTO> reverselists = postDTOList.stream().sorted(comparingPostNoReverse).collect(Collectors.toList());
+        System.out.println("#####" + reverselists);
+        return reverselists;
     }
 
 
@@ -52,6 +60,7 @@ public class PostService {
         if (optionalPostEntity.isPresent()){
             PostEntity postEntity = optionalPostEntity.get();
             PostDTO postDTO = PostDTO.toPostDTO(postEntity);
+
             return postDTO;
         } else{
             return null;

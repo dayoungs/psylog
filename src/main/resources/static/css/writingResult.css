@@ -47,7 +47,7 @@
   font-size:20px;
 }
 
-input[type="date"], select, input[type="text"]{
+input[type="date"], select, input[type="text"], textarea{
   width: 100%;
   margin-top: 10px;
   margin-bottom: 0px;
@@ -55,7 +55,7 @@ input[type="date"], select, input[type="text"]{
   border:none;
   box-sizing: border-box;
   font-family: "IBM Plex Sans KR", sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   background-color:  white;
 }
 
