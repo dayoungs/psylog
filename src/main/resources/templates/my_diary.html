@@ -32,14 +32,16 @@
   <h3>나의 일기</h3>
   <div id="container">
     <div class="content">
-      <div th:each="post : ${postList}" class="log">
-          <a th:href="@{|/post/${post.postNo}|}">
+      <th:block th:each="post : ${postList}">
+      <div class="log">
+          <a style="text-decoration-line: none; color: black" th:href="@{|/post/${post.postNo}|}">
             <span id="log_title" th:text="${post.postTitle}"></span>
           </a><br>
           <span id="log_date" th:text="${post.updateDate}"></span>
         <img id="img" src="/images/기쁨이.png">
-        </div>
+      </div>
         <hr>
+      </th:block>
     </div>
 
 
