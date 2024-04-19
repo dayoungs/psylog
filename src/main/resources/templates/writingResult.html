@@ -66,6 +66,13 @@
 
 </div>
 
+<script th:incline="javascript">
+  const updateReq = () => {
+    console.log("수정 요청");
+    const id = [[${post.postNo}]];
+    location.href = "/post/update/" + id;
+  }
+</script>
 
 </body>
 </html>

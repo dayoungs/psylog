@@ -62,14 +62,14 @@ public class PostController {
     public String updateForm(@PathVariable Long id, Model model){
         PostDTO postDTO = postService.findById(id);
         model.addAttribute("postUpdate", postDTO);
-        return "edit_diary";
+        return "edit_write";
     }
 
     @PostMapping("/post/update")
     public String update(@ModelAttribute PostDTO postDTO, Model model){
         PostDTO post = postService.update(postDTO);
         model.addAttribute("post", post);
-        return "writing";
+        return "writingResult";
     }
 
 
