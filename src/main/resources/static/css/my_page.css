@@ -66,3 +66,15 @@
   text-align: center;
   width:50%;
 }
+
+.leave_button{
+  border-radius: 10px;
+  padding:10px 30px 10px 30px;
+  font-size: 18px;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  background-color:#FF6D3F;
+  color:white;
+  border:none;
+  margin-bottom: 25px;
+  font-weight: bold;
+}

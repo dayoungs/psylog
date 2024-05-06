@@ -14,7 +14,7 @@ public class MemberDTO {
     private Long memberNo;
     private String memberId;
     private String memberPassword;
-    private String memberNickname;
+    private String memberName;
     private String memberEmail;
     private String friendNickname;
 
@@ -26,7 +26,7 @@ public class MemberDTO {
         memberDTO.setMemberId(memberEntity.getMemberId());
         memberDTO.setMemberEmail(memberEntity.getMemberEmail());
         memberDTO.setMemberPassword(memberEntity.getMemberPassword());
-        memberDTO.setMemberNickname(memberEntity.getMemberNickname());
+        memberDTO.setMemberName(memberEntity.getMemberName());
         memberDTO.setFriendNickname(memberEntity.getFriendNickname());
         return memberDTO;
     }

@@ -1,24 +1,13 @@
 package capston.psylog.member.controller;
 
 import capston.psylog.member.dto.MemberDTO;
-import capston.psylog.member.entity.MemberEntity;
 import capston.psylog.member.service.MemberService;
-import capston.psylog.post.dto.PostDTO;
-import capston.psylog.post.service.PostService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,16 +20,18 @@ public class MemberController {
     }
 
     @PostMapping("/member/register")
-    public String save(@ModelAttribute MemberDTO memberDTO, BindingResult bindingResult){
-        /*
-        if (!memberDTO.getMemberPassword().equals(memberDTO.getConfirmPassword())){
-            bindingResult.addError(new FieldError("memberDTO", "confirmPassword", "비밀번호가 일치하지 않습니다."));
-
-            return "register";
-        }
-        */
+    public String save(@ModelAttribute MemberDTO memberDTO, String confirmPassword){
+        if (!confirmPassword.equals(memberDTO.getMemberPassword()))
+            return "register2";
         memberService.save(memberDTO);
         return "login";
+    }
+
+    @PostMapping("/find_id")
+    public String find_id(@RequestParam String email, Model model){
+        MemberDTO member = memberService.findMemberId(email);
+        model.addAttribute("memberId", member.getMemberId());
+        return "find_id_success";
     }
 
     @GetMapping("/member/login")
@@ -57,7 +48,7 @@ public class MemberController {
             return "redirect:/login_home";
         } else {
             // login 실패
-            return "login";
+            return "login2";
         }
     }
 
@@ -73,19 +64,23 @@ public class MemberController {
         return "mem_info_change";
     }
 
+    @PostMapping("/member/mypage/edit")
+    public String update(HttpServletRequest request, @ModelAttribute MemberDTO memberDTO, String confirmPassword) throws Exception {
+        if (!confirmPassword.equals(memberDTO.getMemberPassword())) {
+            request.setAttribute("msg", "비밀번호를 다시 입력해주세요");
+            request.setAttribute("url", "/member/mypage/edit");
+            return "alert";
+        }
+        memberService.update(memberDTO);
+        return "my_page";
+    }
+
     @GetMapping("/member/{memberId}")
     public String findFriendName(@PathVariable String memberId, Model model){
         MemberDTO memberDTO = memberService.findById(memberId);
         String friendName = memberDTO.getFriendNickname(); // friendName 추출
         model.addAttribute("friendName", friendName); // 모델에 friendName 추가
         return "writingResult"; // 결과를 보여줄 뷰 이름 반환
-    }
-
-    @PostMapping("/member/mypage/edit")
-    public String update(@ModelAttribute MemberDTO memberDTO){
-        System.out.println("memberDTO = " + memberDTO);
-        memberService.update(memberDTO);
-        return "redirect:/member/mypage/edit";
     }
 
     @GetMapping("/logout")
@@ -95,6 +90,19 @@ public class MemberController {
             session.invalidate();
         }
         return "start";
+    }
+
+    @GetMapping("/check_leave")
+    public String leave_form() {
+        return "check_leave";
+    }
+
+    @PostMapping("/check_leave")
+    public String check_leave(@SessionAttribute(name = "loginId") String loginId, String password) {
+        MemberDTO memberDTO = memberService.findById(loginId);
+        int check = memberService.leave(memberDTO, password);
+        if (check == 0) return "check_leave2";
+        return "leave";
     }
 
 }

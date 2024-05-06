@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/mem_info_change.css">
-  <title>회원 정보 수정 화면</title>
+  <link rel="stylesheet" href="/css/register.css">
+  <title>회원가입 화면</title>
 
   <!--폰트 적용-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,40 +12,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-
    <!--아이콘 적용-->
    <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
   <div class="title">
-    <h1><a href="/login_home" style="text-decoration-line: none; color: #FF6D3F">PSYLOG</a></h1>
+    <h1><a href="/" style="text-decoration-line: none; color: #FF6D3F">PSYLOG</a></h1>
   </div>
-
-  <div class="box">
   
+  <div class="box">
+
     <!-- input box -->
     <div id="input_box">
-      <div class="box_title"><b>Edit Profile</b></div>
+      <div class="box_title"><b>Register</b></div>
       <div id="container">
-        <form action="/member/mypage/edit" method="post">
-          <input type="hidden" th:value="${member.memberNo}" name="memberNo">
-          <h4>Name</h4>
-          <input id="name" type="text" th:value="${member.memberName}" name="memberName" readonly />
+        <form action="/member/register" method ="post">
+          <h4 style="color: red">비밀번호를 다시 입력해주세요</h4>
+          <h4>Your Name</h4>
+          <input id="user_nickname" type="text" name="memberName" required />
 
           <h4>Friend's Nickname</h4>
-          <input id="friend" type="text" th:value="${member.friendNickname}" name="friendNickname" required />
-
-          <h4>Id</h4>
-          <input id="id" type="text" name="memberId" th:value="${member.memberId}" readonly />
-
+          <input id="friend_nickname" type="text" name="friendNickname" required />
+    
+          <h4>Id<span></span></h4>
+          <div class="check">
+            <input id="id" type="text" name="memberId" required />
+          </div>
+    
           <h4>Password</h4>
           <div class="show">
             <input id="password" type="password" name="memberPassword" required/>
             <i class="fa fa-eye fa-lg" onclick="togglePasswordVisibility()"></i>
           </div>
-          <!-- 임시 js -->
+          <!-- 비밀번호 보기 -->
           <script>
               function togglePasswordVisibility() {
                   var passwordInput = document.getElementById('password');
@@ -61,26 +62,30 @@
                   }
               }
           </script>
-
+    
           <h4>Confirm Password</h4>
           <input id="confirm_password" type="password" name="confirmPassword" required/>
         
           <h4>Email</h4>
-          <input id="email" type="text" th:value="${member.memberEmail}" name="memberEmail" required/>
-
+          <input id="email" type="text" name="memberEmail" required/>
+        
+      
           <div id="btn">
-            <button class="button" id="change_button" type="submit">수정하기</button>
+            <button class="button" id="register_button" type="submit">가입하기</button>
           </div>
-
+    
         </form>
       </div>
     </div>
-
-     <!-- 로고 -->
-     <div id="logo">
+  
+    <!-- 로고 -->
+    <div id="logo">
       <img src="/images/로고.png" alt="로고" style="width:400px;">
     </div>
-
-
+  
+  </div>
 </body>
 </html>
+
+
+

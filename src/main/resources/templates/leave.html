@@ -19,29 +19,23 @@
 <body>
 <!-- 헤더 부분 -->
 <div class="title">
-  <h1><a href="/login_home" style="text-decoration-line: none; color: #FF6D3F">PSYLOG</a></h1>
-  <button class="btn1" id="home_btn" onclick="location.href='/login_home'">홈</button>
-  <button class="btn1" id="diary_btn" onclick="location.href='/post/list'">일기장</button>
-  <button class="btn1" id="myPage_btn" onclick="location.href='/member/mypage'">마이 페이지</button>
-  <button class="btn2" id="writeDiary_btn" onclick="location.href='/post/save'">일기 작성</button>
-  <button class="btn2" id="logOut_btn"  onclick="location.href='/logout'" style="margin-right: 40px;">로그아웃</button>
+  <h1><a href="/" style="text-decoration-line: none; color: #FF6D3F">PSYLOG</a></h1>
+  <button class="btn1" id="home_btn" onclick="location.href='/'">홈</button>
+  <button class="btn1" id="diary_btn" onclick="location.href='/'">일기장</button>
+  <button class="btn1" id="myPage_btn" onclick="location.href='/'">마이 페이지</button>
+  <button class="btn2" id="writeDiary_btn" onclick="location.href='/'">일기 작성</button>
+  <button class="btn2" id="logOut_btn"  onclick="location.href='/'" style="margin-right: 40px;">로그아웃</button>
 </div>
 
 <!-- 마이 페이지 메뉴 -->
 <div class="my_page">
-  <div id="my_page_title"><b>My Page</b></div>
-  <div id="mem_info_change" class="my_page_menu">회원 정보 수정</div>
-  <div id="leave" class="my_page_menu">회원 탈퇴</div>
+  <div id="my_page_title"><b>회원탈퇴가 완료되었습니다!</b></div>
 </div>
 
 <script>
   // div를 클릭하면 다른 페이지로 이동하는 함수
   document.getElementById("mem_info_change").addEventListener("click", function() {
       window.location.href = "/member/mypage/edit";
-  });
-
-  document.getElementById("leave").addEventListener("click", function() {
-    window.location.href = "/check_leave";
   });
 </script>
 

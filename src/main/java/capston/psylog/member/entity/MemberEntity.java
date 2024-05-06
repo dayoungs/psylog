@@ -24,7 +24,7 @@ public class MemberEntity {
     private String memberPassword;
 
     @Column
-    private String memberNickname;
+    private String memberName;
 
     @Column
     private String friendNickname;
@@ -38,7 +38,7 @@ public class MemberEntity {
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMemberId(memberEntity.getMemberId(memberDTO));
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());
-        memberEntity.setMemberNickname(memberDTO.getMemberNickname());
+        memberEntity.setMemberName(memberDTO.getMemberName());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setFriendNickname(memberDTO.getFriendNickname());
         return memberEntity;
@@ -49,7 +49,7 @@ public class MemberEntity {
         memberEntity.setMemberNo((memberDTO.getMemberNo()));
         memberEntity.setMemberId(memberDTO.getMemberId());
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());
-        memberEntity.setMemberNickname(memberDTO.getMemberNickname());
+        memberEntity.setMemberName(memberDTO.getMemberName());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setFriendNickname(memberDTO.getFriendNickname());
         return memberEntity;

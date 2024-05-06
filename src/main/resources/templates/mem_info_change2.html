@@ -29,7 +29,9 @@
       <div class="box_title"><b>Edit Profile</b></div>
       <div id="container">
         <form action="/member/mypage/edit" method="post">
+          <input type="hidden" th:value="%{member.memberNo}" name="memberNo">
           <input type="hidden" th:value="${member.memberNo}" name="memberNo">
+          <h4 style="color: red">비밀번호를 다시 입력해주세요</h4>
           <h4>Name</h4>
           <input id="name" type="text" th:value="${member.memberName}" name="memberName" readonly />
 

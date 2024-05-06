@@ -29,10 +29,10 @@
     <div id="input_box">
       <div class="box_title"><b>Find Id</b></div>
       <div id="container">
-        <h4>이메일에서 Id를 확인하세요</h4>
+        <h4 th:text="${memberId}"></h4>
         
         <div id="btn">
-          <button class="button" id="login_btn" onclick="location.href='login.html'">로그인</button>
+          <button class="button" id="login_btn" onclick="location.href='/login'">로그인</button>
         </div>
       </div>
     </div>

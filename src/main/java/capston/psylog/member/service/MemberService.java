@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -52,8 +50,27 @@ public class MemberService {
        else return null;
     }
 
+    public MemberDTO findMemberId(String email){
+        Optional<MemberEntity> member = memberRepository.findByMemberEmail(email);
+
+        if (member.isPresent()){
+            return MemberDTO.toMemberDTO(member.get());
+        }
+        else return null;
+    }
 
     public void update(MemberDTO memberDTO){
+        String password = passwordEncoder.encode(memberDTO.getMemberPassword());
+        memberDTO.setMemberPassword(password);
         memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
+    }
+
+    public int leave(MemberDTO memberDTO, String password){
+        if (passwordEncoder.matches(password, memberDTO.getMemberPassword())) {
+            MemberEntity member = MemberEntity.toMemberEntity(memberDTO);
+            memberRepository.deleteMemberEntityByMemberId(member.getMemberId());
+            return 1;
+        }
+        else return 0;
     }
 }
