@@ -12,6 +12,8 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
     Optional<MemberEntity> findMemberEntityByMemberEmailAndMemberName(String email, String name);
 
+    Optional<MemberEntity> findMemberEntityByMemberEmailAndMemberNameAndMemberId(String email, String name, String id);
+
     @Transactional
     void deleteMemberEntityByMemberId(String id);
 }

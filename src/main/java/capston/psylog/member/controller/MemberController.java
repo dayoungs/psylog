@@ -2,13 +2,12 @@ package capston.psylog.member.controller;
 
 import capston.psylog.member.dto.MemberDTO;
 import capston.psylog.member.service.MemberService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -39,6 +38,23 @@ public class MemberController {
         }
         model.addAttribute("memberId", member.getMemberId());
         return "find_id_success";
+    }
+
+    @GetMapping("/find_password")
+    public String findPasswordForm(){
+        return "find_password";
+    }
+
+    @PostMapping("/find_password")
+    public String find_password(@RequestParam String email, @RequestParam String name, @RequestParam String id, Model model){
+        MemberDTO member = memberService.findMemberPw(email, name, id);
+        if (member == null){
+            return "find_password2";
+        }
+        String newPw = RandomStringUtils.randomAlphanumeric(10);
+        memberService.update_password(member, newPw);
+        model.addAttribute("memberPassword", newPw);
+        return "find_password_success";
     }
 
     @GetMapping("/member/login")

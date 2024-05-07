@@ -59,9 +59,22 @@ public class MemberService {
         else return null;
     }
 
+    public MemberDTO findMemberPw(String email, String name, String id){
+        Optional<MemberEntity> member = memberRepository.findMemberEntityByMemberEmailAndMemberNameAndMemberId(email, name, id);
+
+        if (member.isPresent()) return MemberDTO.toMemberDTO(member.get());
+        else return null;
+    }
+
     public void update(MemberDTO memberDTO){
         String password = passwordEncoder.encode(memberDTO.getMemberPassword());
         memberDTO.setMemberPassword(password);
+        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
+    }
+
+    public void update_password(MemberDTO memberDTO, String password){
+        String pw = passwordEncoder.encode(password);
+        memberDTO.setMemberPassword(pw);
         memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
     }
 
