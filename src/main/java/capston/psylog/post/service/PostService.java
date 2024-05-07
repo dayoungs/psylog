@@ -42,7 +42,6 @@ public class PostService {
         }
         Comparator<PostDTO> comparingPostNoReverse = Comparator.comparing(PostDTO::getPostNo, Comparator.reverseOrder());
         List<PostDTO> reverselists = postDTOList.stream().sorted(comparingPostNoReverse).collect(Collectors.toList());
-        System.out.println("#####" + reverselists);
         return reverselists;
     }
 
