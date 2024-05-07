@@ -2,6 +2,7 @@ package capston.psylog.member.controller;
 
 import capston.psylog.member.dto.MemberDTO;
 import capston.psylog.member.service.MemberService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -112,11 +113,6 @@ public class MemberController {
         return "start";
     }
      */
-
-    @GetMapping("/logout")
-    public String logout() {
-        return "start";
-    }
 
     @GetMapping("/check_leave")
     public String leave_form() {
