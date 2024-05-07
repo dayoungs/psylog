@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,9 +21,7 @@ public class MemberController {
     }
 
     @PostMapping("/member/register")
-    public String save(@ModelAttribute MemberDTO memberDTO, String confirmPassword){
-        if (!confirmPassword.equals(memberDTO.getMemberPassword()))
-            return "register2";
+    public String save(@ModelAttribute MemberDTO memberDTO){
         memberService.save(memberDTO);
         return "login";
     }
@@ -73,12 +72,7 @@ public class MemberController {
     }
 
     @PostMapping("/member/mypage/edit")
-    public String update(HttpServletRequest request, @ModelAttribute MemberDTO memberDTO, String confirmPassword) throws Exception {
-        if (!confirmPassword.equals(memberDTO.getMemberPassword())) {
-            request.setAttribute("msg", "비밀번호를 다시 입력해주세요");
-            request.setAttribute("url", "/member/mypage/edit");
-            return "alert";
-        }
+    public String update(@ModelAttribute MemberDTO memberDTO) {
         memberService.update(memberDTO);
         return "my_page";
     }
@@ -91,12 +85,20 @@ public class MemberController {
         return "writingResult"; // 결과를 보여줄 뷰 이름 반환
     }
 
+    /*
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);  // Session이 없으면 null return
         if(session != null) {
             session.invalidate();
         }
+        else System.out.println("session null");
+        return "start";
+    }
+     */
+
+    @GetMapping("/logout")
+    public String logout() {
         return "start";
     }
 

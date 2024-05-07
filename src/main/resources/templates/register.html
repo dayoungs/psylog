@@ -41,7 +41,7 @@
     
           <h4>Password</h4>
           <div class="show">
-            <input id="password" type="password" name="memberPassword" required/>
+            <input id="password" type="password" name="memberPassword" onchange="check_pw()" required/>
             <i class="fa fa-eye fa-lg" onclick="togglePasswordVisibility()"></i>
           </div>
           <!-- 비밀번호 보기 -->
@@ -63,7 +63,7 @@
           </script>
     
           <h4>Confirm Password</h4>
-          <input id="confirm_password" type="password" name="confirmPassword" required/>
+          <input id="confirm_password" type="password" name="confirmPassword" onchange="check_pw()" required/>&nbsp;<span id="check"></span>
         
           <h4>Email</h4>
           <input id="email" type="text" name="memberEmail" required/>
@@ -84,6 +84,21 @@
   
   </div>
 </body>
+
+<script>
+  function check_pw() {
+    if (document.getElementById('password').value != '' && document.getElementById('confirm_password').value != '') {
+      if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
+        document.getElementById('check').innerHTML = '비밀번호가 일치합니다.'
+        document.getElementById('check').style.color = 'blue';
+      } else {
+        document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
+        document.getElementById('check').style.color = 'red';
+      }
+    }
+  }
+</script>
+
 </html>
 
 
