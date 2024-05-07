@@ -50,8 +50,8 @@ public class MemberService {
        else return null;
     }
 
-    public MemberDTO findMemberId(String email){
-        Optional<MemberEntity> member = memberRepository.findByMemberEmail(email);
+    public MemberDTO findMemberId(String email, String name){
+        Optional<MemberEntity> member = memberRepository.findMemberEntityByMemberEmailAndMemberName(email, name);
 
         if (member.isPresent()){
             return MemberDTO.toMemberDTO(member.get());

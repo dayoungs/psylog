@@ -27,9 +27,17 @@ public class MemberController {
         return "login";
     }
 
+    @GetMapping("/find_id")
+    public String findIdForm(){
+        return "find_id";
+    }
+
     @PostMapping("/find_id")
-    public String find_id(@RequestParam String email, Model model){
-        MemberDTO member = memberService.findMemberId(email);
+    public String find_id(@RequestParam String email, @RequestParam String name, Model model){
+        MemberDTO member = memberService.findMemberId(email, name);
+        if (member == null){
+            return "find_id2";
+        }
         model.addAttribute("memberId", member.getMemberId());
         return "find_id_success";
     }
