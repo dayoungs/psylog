@@ -61,6 +61,8 @@ public class PostService {
 
     public PostDTO update(PostDTO postDTO) {
         PostEntity postEntity = PostEntity.toUpdateEntity(postDTO);
+        String response = getResponse(postEntity.getPostNo());
+        postEntity.setAiAnswer(response);
         postRepository.save(postEntity);
         return findById(postDTO.getPostNo());
     }
