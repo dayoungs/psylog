@@ -69,7 +69,7 @@ public class PostController {
     public String update(@ModelAttribute PostDTO postDTO, Model model){
         PostDTO post = postService.update(postDTO);
         model.addAttribute("post", post);
-        return "writingResult";
+        return "redirect:/login_home";
     }
 
 
