@@ -8,18 +8,12 @@ import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,8 +24,19 @@ public class PostService {
     public void save(PostDTO postDTO) {
         PostEntity postEntity = PostEntity.toSaveEntity(postDTO);
         postEntity = postRepository.save(postEntity);
+
         String response = getResponse(postEntity.getPostNo());
+
+        JsonObject sentiment = analyzeSentiment(postEntity.getPostNo());
+        String negative = sentiment.get("negative").getAsString();
+        String positive = sentiment.get("positive").getAsString();
+        String neutral = sentiment.get("neutral").getAsString();
+
         postEntity.setAiAnswer(response);
+        postEntity.setNegative(negative);
+        postEntity.setPositive(positive);
+        postEntity.setNeutral(neutral);
+
         postRepository.save(postEntity);
     }
     public List<PostDTO> findByWriter(String id) {
@@ -62,8 +67,19 @@ public class PostService {
     public PostDTO update(PostDTO postDTO) {
         PostEntity postEntity = PostEntity.toUpdateEntity(postDTO);
         String response = getResponse(postEntity.getPostNo());
+
+        JsonObject sentiment = analyzeSentiment(postEntity.getPostNo());
+        String negative = sentiment.get("negative").getAsString();
+        String positive = sentiment.get("positive").getAsString();
+        String neutral = sentiment.get("neutral").getAsString();
+
         postEntity.setAiAnswer(response);
+        postEntity.setNegative(negative);
+        postEntity.setPositive(positive);
+        postEntity.setNeutral(neutral);
+
         postRepository.save(postEntity);
+
         return findById(postDTO.getPostNo());
     }
 
@@ -76,6 +92,15 @@ public class PostService {
 
     @Value("${openai.api.url}")
     private String url;
+
+    @Value("${clova.api.endpoint}")
+    private String clovaApiEndpoint;
+
+    @Value("${clova.api.key}")
+    private String clovaApiKey;
+
+    @Value("${clova.api.secret}")
+    private String clovaApiSecret;
 
     public String getResponse(Long postId) {
         PostEntity postEntity = postRepository.findById(postId)
@@ -100,4 +125,32 @@ public class PostService {
 
         return content;
     }
+
+    public JsonObject analyzeSentiment(Long postId) {
+        PostEntity postEntity = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 글이 존재하지 않습니다."));
+        String result = postEntity.getPostContent();
+        String prompt = result.replace("\n", "").replace("\r", "");
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("X-NCP-APIGW-API-KEY-ID", clovaApiKey);
+        headers.set("X-NCP-APIGW-API-KEY", clovaApiSecret);
+
+        Map<String, String> requestBody = new HashMap<>();
+        requestBody.put("content", prompt);
+
+        HttpEntity<Map<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        ResponseEntity<String> response = restTemplate.postForEntity(clovaApiEndpoint, requestEntity, String.class);
+
+        String clova = response.getBody();
+
+        JsonObject jsonObject = JsonParser.parseString(clova).getAsJsonObject();
+        JsonObject sentiment = jsonObject.getAsJsonObject("document").getAsJsonObject("confidence");
+
+        return sentiment;
+    }
+
 }

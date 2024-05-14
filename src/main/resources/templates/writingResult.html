@@ -13,7 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
    <!--아이콘 적용-->
-   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 
 <body>
@@ -57,7 +58,7 @@
   <div id="bigBox">
     <!-- 감정 분석 그래프 -->
     <div id="graph">
-      <img src="/images/그래프.png" alt="감정 분석 그래프" style="width:90%; ">
+      <canvas id="bar-chart" width="800" height="450"></canvas>
     </div>
     <!-- 공감,조언 -->
     <div id="solution" th:text="${post.aiAnswer}">
@@ -72,6 +73,32 @@
     const id = [[${post.postNo}]];
     location.href = "/post/update/" + id;
   }
+
+  const negative = [[${post.negative}]];
+  const positive = [[${post.positive}]];
+  const neutral = [[${post.neutral}]];
+
+  // Bar chart
+  new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Negative", "Positive", "Neutral"],
+      datasets: [
+        {
+          label: "Sentiment (percent)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+          data: [negative, positive, neutral]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted sentiment of your diary'
+      }
+    }
+  });
 </script>
 
 </body>

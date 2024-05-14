@@ -19,6 +19,9 @@ public class PostDTO {
     private String postTitle;
     private String postContent;
     private String aiAnswer;
+    private String negative;
+    private String positive;
+    private String neutral;
 
     public static PostDTO toPostDTO(PostEntity postEntity){
         PostDTO postDTO = new PostDTO();
@@ -30,6 +33,9 @@ public class PostDTO {
         postDTO.setPostTitle(postEntity.getPostTitle());
         postDTO.setPostContent(postEntity.getPostContent());
         postDTO.setAiAnswer(postEntity.getAiAnswer());
+        postDTO.setNegative(postEntity.getNegative());
+        postDTO.setPositive(postEntity.getPositive());
+        postDTO.setNeutral(postEntity.getNeutral());
         return postDTO;
     }
 }

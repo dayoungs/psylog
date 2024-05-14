@@ -33,6 +33,15 @@ public class PostEntity extends BaseEntity{
     @Column(length = 100000)
     private String aiAnswer;
 
+    @Column
+    private String negative;
+
+    @Column
+    private String positive;
+
+    @Column
+    private String neutral;
+
     public static PostEntity toSaveEntity(PostDTO postDTO){
         PostEntity postEntity = new PostEntity();
         postEntity.setPostWriter(postDTO.getPostWriter());
@@ -40,6 +49,9 @@ public class PostEntity extends BaseEntity{
         postEntity.setPostTitle(postDTO.getPostTitle());
         postEntity.setPostContent(postDTO.getPostContent());
         postEntity.setAiAnswer(postDTO.getAiAnswer());
+        postEntity.setNegative(postDTO.getNegative());
+        postEntity.setPositive(postDTO.getPositive());
+        postEntity.setNeutral(postDTO.getNeutral());
         return postEntity;
     }
 
@@ -51,6 +63,9 @@ public class PostEntity extends BaseEntity{
         postEntity.setPostTitle(postDTO.getPostTitle());
         postEntity.setPostContent(postDTO.getPostContent());
         postEntity.setAiAnswer(postDTO.getAiAnswer());
+        postEntity.setNegative(postDTO.getNegative());
+        postEntity.setPositive(postDTO.getPositive());
+        postEntity.setNeutral(postDTO.getNeutral());
         return postEntity;
     }
 }
