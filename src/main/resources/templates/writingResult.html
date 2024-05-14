@@ -58,7 +58,7 @@
   <div id="bigBox">
     <!-- 감정 분석 그래프 -->
     <div id="graph">
-      <canvas id="bar-chart" width="800" height="450"></canvas>
+      <canvas id="pie-chart" width="2000" height="1450"></canvas>
     </div>
     <!-- 공감,조언 -->
     <div id="solution" th:text="${post.aiAnswer}">
@@ -78,24 +78,20 @@
   const positive = [[${post.positive}]];
   const neutral = [[${post.neutral}]];
 
-  // Bar chart
-  new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
+  new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
     data: {
-      labels: ["Negative", "Positive", "Neutral"],
-      datasets: [
-        {
-          label: "Sentiment (percent)",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-          data: [negative, positive, neutral]
-        }
-      ]
+      labels: ["부정", "긍정", "중립"],
+      datasets: [{
+        label: "Sentiment (percent)",
+        backgroundColor: ["#a7a8a8", "#FF6D3F", "#ff9980"],
+        data: [negative, positive, neutral]
+      }]
     },
     options: {
-      legend: { display: false },
       title: {
         display: true,
-        text: 'Predicted sentiment of your diary'
+        text: '나의 일기에 담긴 감정은??'
       }
     }
   });
