@@ -22,6 +22,18 @@ public class MemberService {
         memberRepository.save(memberEntity);
     }
 
+    public int idcheck(String memberId){
+        boolean check = memberRepository.existsMemberEntityByMemberId(memberId);
+        if (!check) return 1;
+        else return 0;
+    }
+
+    public int emailcheck(String memberEmail){
+        boolean check = memberRepository.existsMemberEntityByMemberEmail(memberEmail);
+        if (!check) return 1;
+        else return 0;
+    }
+
     public MemberDTO login(MemberDTO memberDTO){
         Optional<MemberEntity> byMemberId = memberRepository.findByMemberId(memberDTO.getMemberId());
 

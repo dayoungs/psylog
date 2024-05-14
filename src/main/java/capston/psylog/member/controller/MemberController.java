@@ -26,6 +26,20 @@ public class MemberController {
         return "login";
     }
 
+    @ResponseBody
+    @GetMapping("/member/idcheck")
+    public int id_check(@RequestParam("username") String username){
+        int result = memberService.idcheck(username); // 중복확인한 값을 int로 받음
+        return result;
+    }
+
+    @ResponseBody
+    @GetMapping("/member/emailcheck")
+    public int email_check(@RequestParam("useremail") String useremail){
+        int result = memberService.emailcheck(useremail); // 중복확인한 값을 int로 받음
+        return result;
+    }
+
     @GetMapping("/find_id")
     public String findIdForm(){
         return "find_id";
