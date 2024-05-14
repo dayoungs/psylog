@@ -14,11 +14,4 @@ import java.time.LocalDate;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 public class BaseEntity {
-    @CreationTimestamp
-    @Column(updatable = false)
-    private LocalDate postDate;
-
-    @UpdateTimestamp
-    @Column(insertable = false)
-    private LocalDate updateDate;
 }

@@ -19,6 +19,12 @@ public class PostEntity extends BaseEntity{
     @Column(nullable = false)
     private String postWriter;
 
+    @Column(name="post_date",updatable = false)
+    private LocalDate postDate;
+
+    @Column(name = "update_date",insertable = false)
+    private LocalDate updateDate;
+
     @Column
     private String postEmotion;
 
@@ -52,6 +58,8 @@ public class PostEntity extends BaseEntity{
         postEntity.setNegative(postDTO.getNegative());
         postEntity.setPositive(postDTO.getPositive());
         postEntity.setNeutral(postDTO.getNeutral());
+        postEntity.setPostDate(postDTO.getPostDate());
+        postEntity.setUpdateDate(postDTO.getUpdateDate());
         return postEntity;
     }
 
@@ -66,6 +74,7 @@ public class PostEntity extends BaseEntity{
         postEntity.setNegative(postDTO.getNegative());
         postEntity.setPositive(postDTO.getPositive());
         postEntity.setNeutral(postDTO.getNeutral());
+        postEntity.setUpdateDate(postDTO.getUpdateDate());
         return postEntity;
     }
 }
