@@ -34,22 +34,41 @@
   <div class="data" id="date" name="date" th:text="${post.updateDate}" style="color: #818181" readonly></div>
   <hr>
 
-  <div class="data" th:text="${post.postTitle}" id="diary_title" name="diary_title" style="font-size: 30px;" readonly></div>
+  <div class="data" th:text="${post.postTitle}" id="diary_title" name="diary_title" style="font-size: 25px;" readonly></div>
   <hr>
 
-<!--  <div class="data" id="content" th:text="${post.postContent}" name="content" readonly></div>-->
+  <div id="emotion_container">
+    <div id="emotion_selection">
+      <select id="emotion" name="emotion" required onchange="displayImage()" disabled style="font-size: 20px; color:black;">
+        <option value="">== 오늘의 기분을 선택하세요 ==</option>
+        <option value="happy">신나고 기뻐요😄</option>
+        <option value="excited">두근거리고 설레요😍</option>
+        <option value="sad">슬프고 우울해요😭</option>
+        <option value="disappointed">좌절... 되는게 없어요😞</option>
+        <option value="angry">짜증나고 화가나요😡</option>
+        <option value="afraid">불안하고 두려워요😱</option>
+        <option value="normal">기쁘지도 슬프지도 않아요😑</option>
+      </select><br>
+    </div>
+    <img id="emotionImage" src="/images/투명배경.png">
+  </div>
+  <hr>
+
+
+  <!--  <div class="data" id="content" th:text="${post.postContent}" name="content" readonly></div>-->
   <textarea id="content" th:text="${post.postContent}" name="content" readonly></textarea>
 
   <hr>
-  <div>
-    <button onclick="updateReq()" id="fix_btn" style="width:100px;"><b>수정하기</b></button>
+  <div style="height:100px;">
+    <button onclick="" class="change_btn" id="delete_btn" style="width:100px;"><b>삭제하기</b></button>
+    <button onclick="updateReq()" class="change_btn" id="fix_btn" style="width:100px; margin-right:15px;"><b>수정하기</b></button>
   </div>
 </div>
 
 <!-- 분석 결과 -->
 <div class="resultBox">
   <div class="result_title">
-    <b><span style="color:#FF6D3F">내 친구 </span>
+    <b><span>내 친구 </span>
       <span style="color:#FF6D3F" th:text="${member.friendNickname}"></span>
       의 한 마디 </b><i class="fa-solid fa-pen-to-square"></i>
   </div>
@@ -58,7 +77,7 @@
   <div id="bigBox">
     <!-- 감정 분석 그래프 -->
     <div id="graph">
-      <canvas id="pie-chart" width="2000" height="1450"></canvas>
+      <canvas id="pie-chart" width="20000" height="1450"></canvas>
     </div>
     <!-- 공감,조언 -->
     <div id="solution" th:text="${post.aiAnswer}">
@@ -95,6 +114,32 @@
       }
     }
   });
+
+  //선택한 감정 캐릭터를 보여주는 함수
+  function displayImage() {
+    var selectBox = document.getElementById("emotion");
+    var selectedValue = selectBox.value;
+    var imageElement = document.getElementById("emotionImage");
+    if (selectedValue === "happy") {
+      imageElement.src = "/images/기쁨이.png";
+    } else if (selectedValue === "excited") {
+      imageElement.src = "/images/설렘이.png";
+    } else if (selectedValue === "sad") {
+      imageElement.src = "/images/슬픔이.png";
+    } else if (selectedValue === "disappointed") {
+      imageElement.src = "/images/좌절이.png";
+    } else if (selectedValue === "angry") {
+      imageElement.src = "/images/화남이.png";
+    } else if (selectedValue === "afraid") {
+      imageElement.src = "/images/불안이.png";
+    } else if (selectedValue === "normal") {
+      imageElement.src = "/images/보통이.png";
+    } else {
+      // 투명 이미지(감정 선택을 하지 않은 경우)
+      imageElement.src = "images/투명배경.png";
+    }
+  }
+
 </script>
 
 </body>

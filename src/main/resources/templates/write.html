@@ -40,6 +40,24 @@
       <input type="text" id="diary_title" name="postTitle" required>
       <hr>
 
+      <div id="emotion_container">
+          <div id="emotion_selection">
+              <label for="emotion">기분:<br></label>
+              <select id="emotion" name="emotion" required onchange="displayImage()">
+                  <option value="">== 오늘의 기분을 선택하세요 ==</option>
+                  <option value="happy">신나고 기뻐요😄</option>
+                  <option value="excited">두근거리고 설레요😍</option>
+                  <option value="sad">슬프고 우울해요😭</option>
+                  <option value="disappointed">좌절... 되는게 없어요😞</option>
+                  <option value="angry">짜증나고 화가나요😡</option>
+                  <option value="afraid">불안하고 두려워요😱</option>
+                  <option value="normal">기쁘지도 슬프지도 않아요😑</option>
+              </select><br>
+          </div>
+          <img id="emotionImage" src="/images/투명배경.png">
+      </div>
+      <hr>
+
       <label for="content">일기 내용:</label>
       <textarea id="content" name="postContent"></textarea>
       <hr>
@@ -65,6 +83,59 @@
       var today = new Date().toISOString().split('T')[0];
       document.getElementById('date').setAttribute('max', today);
   };
+
+  const emotion = formData.get('emotion');
+    let emotionText = '';
+    switch(emotion) {
+      case 'happy':
+        emotionText = '기쁨이';
+        break;
+      case 'excited':
+        emotionText = '설렘이';
+        break;
+      case 'sad':
+        emotionText = '슬픔이';
+        break;
+      case 'disappointed':
+        emotionText = '좌절이';
+        break;
+      case 'angry':
+        emotionText = '화남이';
+        break;
+      case 'afraid':
+        emotionText = '불안이';
+        break;
+      case 'normal':
+        emotionText = '보통이';
+        break;
+      default:
+        emotionText = '';
+    }
+
+  //선택한 감정 캐릭터를 보여주는 함수
+  function displayImage() {
+    var selectBox = document.getElementById("emotion");
+    var selectedValue = selectBox.value;
+    var imageElement = document.getElementById("emotionImage");
+    if (selectedValue === "happy") {
+      imageElement.src = '/images/기쁨이.png';
+    } else if (selectedValue === "excited") {
+      imageElement.src = "/images/설렘이.png";
+    } else if (selectedValue === "sad") {
+      imageElement.src = "/images/슬픔이.png";
+    } else if (selectedValue === "disappointed") {
+      imageElement.src = "/images/좌절이.png";
+    } else if (selectedValue === "angry") {
+      imageElement.src = "/images/화남이.png";
+    } else if (selectedValue === "afraid") {
+      imageElement.src = "/images/불안이.png";
+    } else if (selectedValue === "normal") {
+      imageElement.src = "/images/보통이.png";
+    } else {
+      // 투명 이미지(감정 선택을 하지 않은 경우)
+      imageElement.src = "images/투명배경.png";
+    }
+  }
 </script>
 
 </body>

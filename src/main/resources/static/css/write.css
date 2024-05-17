@@ -35,7 +35,7 @@
 
 .diary-form {
   max-width: 900px;
-  height:740px;
+  height:900px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -75,4 +75,21 @@ textarea {
   float:right;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+#emotion_container{
+  display: flex;
+  align-items: center;
+  }
+
+#emotion_selection{
+  width:82%;
+  height: 100px;
+}
+
+#emotionImage{
+  width:130px;
+  height:130px;
+  margin-top: 10px;
+  margin-left: 20px;
 }

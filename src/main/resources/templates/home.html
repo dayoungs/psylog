@@ -107,10 +107,10 @@
     <div id="container">
       <th:block th:each="post, stat : ${postList}">
         <div th:if="${stat.count <= 5}" class="log">
-          <div class="content">
+          <div class="container" style="line-height:25px;">
             <a style="text-decoration-line: none; color: black" th:href="@{|/post/${post.postNo}|}">
               <span id="log_title" th:text="${post.postTitle}"></span>
-            </a><br>
+            </a><br><br>
             <span id="log_date" th:text="${post.updateDate}"></span>
           </div>
           <th:block th:if="${post.postEmotion == 'happy'}">

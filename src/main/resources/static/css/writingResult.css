@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;/* 가로 스크롤바 제거 */
+}
+
 .title{
   padding-left: 40px;
   display: flex;
@@ -35,7 +39,7 @@
 
 .diary-form {
   max-width: 900px;
-  height:740px;
+  height:780px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -67,7 +71,7 @@ input[type="date"], select, input[type="text"], textarea{
   padding: 10px;
 }
 
-#fix_btn{
+.change_btn{
   padding:10px 10px 10px 10px;
   font-family: "IBM Plex Sans KR", sans-serif;
   font-size: 18px;
@@ -126,3 +130,21 @@ input[type="date"], select, input[type="text"], textarea{
   text-align: left;
   overflow: auto;
 }
+
+#emotion_container{
+  display: flex;
+  align-items: center;
+  }
+
+#emotion_selection{
+  width:82%;
+  height: 100px;
+}
+
+#emotionImage{
+  width:130px;
+  height:130px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
