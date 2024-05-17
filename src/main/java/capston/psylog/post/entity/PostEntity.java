@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Table(name = "post_table")
-public class PostEntity extends BaseEntity{
+public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postNo;

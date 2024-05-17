@@ -24,7 +24,6 @@ public class PostController {
 
     @PostMapping("/post/save")
     public String save(@ModelAttribute PostDTO postDTO, @SessionAttribute(name = "loginId") String loginId){
-        System.out.println("postDTO = " + postDTO);
         postDTO.setPostWriter(loginId);
         postDTO.setUpdateDate(postDTO.getPostDate());
         postService.save(postDTO);

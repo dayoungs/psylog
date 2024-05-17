@@ -13,7 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
    <!--아이콘 적용-->
-   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
     <div id="input_box">
       <div class="box_title"><b>Register</b></div>
       <div id="container">
-        <form action="/member/register" method ="post">
+        <form action="/member/register" method ="post" onsubmit="return valid()">
           <h4>Your Name</h4>
           <input id="user_nickname" type="text" name="memberName" required />
 
@@ -37,6 +38,7 @@
           <h4>Id<span></span></h4>
           <div class="check">
             <input id="id" type="text" name="memberId" required />
+            <button type="button" class="button" id="id_check" onclick="idCheck()">중복 확인</button>
           </div>
     
           <h4>Password</h4>
@@ -67,6 +69,7 @@
         
           <h4>Email</h4>
           <input id="email" type="email" name="memberEmail" required/>
+          <button type="button" class="button" id="email_check" onclick="emailCheck()">중복 확인</button>
         
       
           <div id="btn">
@@ -97,6 +100,59 @@
       }
     }
   }
+
+  let submitCheck1 = false;
+  let submitCheck2 = false;
+
+  function valid() {
+    if (submitCheck1 && submitCheck2) { // true 가 되면 회원가입 버튼 동작함
+      return true;
+    } else {
+      alert('ID 또는 이메일 중복확인을 해주세요');
+      // 회원가입 버튼누르면 뜬다
+      return false; // 회원가입 버튼을 막는다
+    }
+  }
+  function idCheck() {
+    let username = $('#id').val()
+
+    $.ajax({
+      type: "get",
+      url: "/member/idcheck?username=" + username
+    }).done((result) => {
+      //console.log(res);
+      if (result == 0) {
+        alert("사용 중인 ID 입니다.");
+        submitCheck1 = false; // 중복 체크 완료
+      } else {
+        alert("사용 가능한 ID 입니다.");
+        submitCheck1 = true;
+      }
+    }).fail((err) => {
+      console.log('상태코드 200밖에 없어서 실행 안됨')
+    });
+  }
+
+  function emailCheck() {
+    let useremail = $('#email').val()
+
+    $.ajax({
+      type: "get",
+      url: "/member/emailcheck?useremail=" + useremail
+    }).done((result) => {
+      //console.log(res);
+      if (result == 0) {
+        alert("사용 중인 이메일 입니다.");
+        submitCheck2 = false; // 중복 체크 완료
+      } else {
+        alert("사용 가능한 이메일 입니다.");
+        submitCheck2 = true;
+      }
+    }).fail((err) => {
+      console.log('상태코드 200밖에 없어서 실행 안됨')
+    });
+  }
+
 </script>
 
 </html>

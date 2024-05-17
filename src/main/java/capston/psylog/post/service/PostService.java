@@ -93,15 +93,6 @@ public class PostService {
     @Value("${openai.api.url}")
     private String url;
 
-    @Value("${clova.api.endpoint}")
-    private String clovaApiEndpoint;
-
-    @Value("${clova.api.key}")
-    private String clovaApiKey;
-
-    @Value("${clova.api.secret}")
-    private String clovaApiSecret;
-
     public String getResponse(Long postId) {
         PostEntity postEntity = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 글이 존재하지 않습니다."));
@@ -125,6 +116,15 @@ public class PostService {
 
         return content;
     }
+
+    @Value("${clova.api.endpoint}")
+    private String clovaApiEndpoint;
+
+    @Value("${clova.api.key}")
+    private String clovaApiKey;
+
+    @Value("${clova.api.secret}")
+    private String clovaApiSecret;
 
     public JsonObject analyzeSentiment(Long postId) {
         PostEntity postEntity = postRepository.findById(postId)

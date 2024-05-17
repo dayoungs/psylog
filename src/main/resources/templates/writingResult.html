@@ -80,8 +80,7 @@
       <canvas id="pie-chart" width="20000" height="1450"></canvas>
     </div>
     <!-- 공감,조언 -->
-    <div id="solution" th:text="${post.aiAnswer}">
-    </div>
+    <div id="solution" th:text="${post.aiAnswer}"></div>
   </div> 
 
 </div>
@@ -103,7 +102,7 @@
       labels: ["부정", "긍정", "중립"],
       datasets: [{
         label: "Sentiment (percent)",
-        backgroundColor: ["#a7a8a8", "#FF6D3F", "#ff9980"],
+        backgroundColor: ["#a7a8a8", "#FF6D3F", "#ffc5b6"],
         data: [negative, positive, neutral]
       }]
     },
