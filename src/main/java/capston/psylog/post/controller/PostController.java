@@ -5,18 +5,13 @@ import capston.psylog.member.service.MemberService;
 import capston.psylog.post.dto.PostDTO;
 import capston.psylog.post.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
