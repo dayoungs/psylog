@@ -96,6 +96,7 @@
       } else {
         document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
         document.getElementById('check').style.color = 'red';
+        pwCheck = false;
       }
     }
   }
@@ -105,6 +106,7 @@
       alert('비밀번호를 다시 설정해주세요');
       return false;
     }
+    else return true;
   }
 
 </script>

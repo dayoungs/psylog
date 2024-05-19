@@ -199,8 +199,6 @@
       // 이미지를 삽입할 img 태그 생성
       const imgElement = document.createElement("img");
       let date = new Date(year, month, i);
-      console.log("#################"+date);
-      // 오늘 이후의 날짜인 경우 투명 배경 이미지 적용, 그렇지 않은 경우 설렘이.png 이미지 적용
       if (date > currentDate) {
         imgElement.src = 'images/투명배경.png';
       } else {
