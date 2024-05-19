@@ -43,7 +43,7 @@
       <div id="emotion_container">
           <div id="emotion_selection">
               <label for="emotion">기분:<br></label>
-              <select id="emotion" name="emotion" required onchange="displayImage()">
+              <select id="emotion" name="postEmotion" required onchange="displayImage()">
                   <option value="">== 오늘의 기분을 선택하세요 ==</option>
                   <option value="happy">신나고 기뻐요😄</option>
                   <option value="excited">두근거리고 설레요😍</option>
@@ -83,34 +83,6 @@
       var today = new Date().toISOString().split('T')[0];
       document.getElementById('date').setAttribute('max', today);
   };
-
-  const emotion = formData.get('emotion');
-    let emotionText = '';
-    switch(emotion) {
-      case 'happy':
-        emotionText = '기쁨이';
-        break;
-      case 'excited':
-        emotionText = '설렘이';
-        break;
-      case 'sad':
-        emotionText = '슬픔이';
-        break;
-      case 'disappointed':
-        emotionText = '좌절이';
-        break;
-      case 'angry':
-        emotionText = '화남이';
-        break;
-      case 'afraid':
-        emotionText = '불안이';
-        break;
-      case 'normal':
-        emotionText = '보통이';
-        break;
-      default:
-        emotionText = '';
-    }
 
   //선택한 감정 캐릭터를 보여주는 함수
   function displayImage() {

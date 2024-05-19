@@ -5,11 +5,20 @@ import capston.psylog.member.service.MemberService;
 import capston.psylog.post.dto.PostDTO;
 import capston.psylog.post.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequiredArgsConstructor
@@ -37,6 +46,24 @@ public class PostController {
         model.addAttribute("postList", postDTOList);
 
         return "home";
+    }
+
+    @ResponseBody
+    @GetMapping("/post/emotionfind")
+    public String emotion_find(@RequestParam("date") String date, @SessionAttribute(name="loginId") String loginId) {
+        String subdate = date.substring(0, 24);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd yyyy HH:mm:ss", Locale.ENGLISH);
+
+        LocalDateTime localTime = LocalDateTime.parse(subdate, formatter);
+        LocalDate output = localTime.toLocalDate();
+        System.out.println("output date = " + output);
+
+        PostDTO post = postService.emotionfind(loginId, output);
+        if (post == null) {
+            return null;
+        }
+        String emotion = post.getPostEmotion();
+        return emotion;
     }
 
     @GetMapping("/post/list")
@@ -68,6 +95,14 @@ public class PostController {
     public String update(@ModelAttribute PostDTO postDTO, Model model){
         PostDTO post = postService.update(postDTO);
         model.addAttribute("post", post);
+        return "redirect:/login_home";
+    }
+
+
+    @GetMapping("/post/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        PostDTO postDTO = postService.findById(id);
+        postService.delete(postDTO);
         return "redirect:/login_home";
     }
 

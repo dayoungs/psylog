@@ -126,6 +126,14 @@
   margin-top: 25px;
 }
 
+#img7{
+  width: 125px;
+  height:125px;
+  margin-left: auto; /* 이미지를 오른쪽으로 밀어넣음 */
+  margin-right: 5px;
+  margin-top: 25px;
+}
+
 #log_title{
   font-size:28px;
 }

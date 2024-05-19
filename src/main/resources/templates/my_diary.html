@@ -38,11 +38,32 @@
             <span id="log_title"  th:text="${post.postTitle}"></span>
           </a><br><br>
           <span id="log_date" th:text="${post.updateDate}"></span>
-        <img id="img" src="/images/기쁨이.png" style="float: right; margin-left: 5px; margin-top:-60px;">
+          <th:block th:if="${post.postEmotion == 'happy'}">
+            <img id="img1" src="/images/기쁨이.png" style="float: right; margin-left: 5px; margin-top:-60px;">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'excited'}">
+            <img id="img2" src="/images/설렘이.png" style="float: right; margin-left: 5px; margin-top:-60px;">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'sad'}">
+            <img id="img3" src="/images/슬픔이.png" style="float: right; margin-left: 5px; margin-top:-60px;">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'disappointed'}">
+            <img id="img4" src="/images/좌절이.png" style="float: right; margin-left: 5px; margin-top:-60px;">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'angry'}">
+            <img id="img5" src="/images/화남이.png" style="float: right; margin-left: 5px; margin-top:-60px;">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'afraid'}">
+            <img id="img6" src="/images/불안이.png" style="float: right; margin-left: 5px; margin-top:-60px;">
+          </th:block>
+          <th:block th:if="${post.postEmotion == 'normal'}">
+              <img id="img7" src="/images/보통이.png" style="float: right; margin-left: 5px; margin-top:-60px;">
+          </th:block>
+          <hr>
       </div>
-        <hr>
       </th:block>
     </div>
+  </div>
 
 
 

@@ -15,6 +15,9 @@
    <!--아이콘 적용-->
    <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
 
+   <!--ajax-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
    <!-- calendar css  -->
    <style>
     .calendar {
@@ -131,11 +134,16 @@
           <th:block th:if="${post.postEmotion == 'afraid'}">
             <img id="img6" src="/images/불안이.png">
           </th:block>
+          <th:block th:if="${post.postEmotion == 'normal'}">
+            <img id="img7" src="/images/보통이.png">
+          </th:block>
         </div>
         <hr>
       </th:block>
     </div>
   </div>
+</div>
+</body>
 
 
 <!-- calendar js -->
@@ -190,12 +198,43 @@
 
       // 이미지를 삽입할 img 태그 생성
       const imgElement = document.createElement("img");
-
+      let date = new Date(year, month, i);
+      console.log("#################"+date);
       // 오늘 이후의 날짜인 경우 투명 배경 이미지 적용, 그렇지 않은 경우 설렘이.png 이미지 적용
-      if (new Date(year, month, i) > currentDate) {
+      if (date > currentDate) {
         imgElement.src = 'images/투명배경.png';
       } else {
-        imgElement.src = 'images/설렘이.png';
+        $.ajax({
+          type: "get",
+          url: "/post/emotionfind?date=" + date
+        }).done((emotion) => {
+          if (emotion == 'happy') {
+            imgElement.src = 'images/기쁨이.png';
+          }
+          else if (emotion == 'excited') {
+            imgElement.src = 'images/설렘이.png';
+          }
+          else if (emotion == 'sad') {
+            imgElement.src = 'images/슬픔이.png';
+          }
+          else if (emotion == 'disappointed') {
+            imgElement.src = 'images/좌절이.png';
+          }
+          else if (emotion == 'angry') {
+            imgElement.src = 'images/화남이.png';
+          }
+          else if (emotion == 'afraid') {
+            imgElement.src = 'images/불안이.png';
+          }
+          else if (emotion == 'normal') {
+            imgElement.src = 'images/보통이.png';
+          }
+          else {
+            imgElement.src = 'images/투명배경.png';
+          }
+        }).fail((err) => {
+          console.log('상태코드 200밖에 없어서 실행 안됨')
+        });
       }
 
       // 이미지 크기 설정
@@ -240,8 +279,4 @@
   });
 </script>
 
-
-
-
-</body>
 </html>

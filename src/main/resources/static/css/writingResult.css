@@ -148,3 +148,10 @@ input[type="date"], select, input[type="text"], textarea{
   margin-left: 20px;
 }
 
+#img1, #img2, #img3, #img4, #img5, #img6, #img7 {
+  width: 125px;
+  height:125px;
+  margin-left: auto; /* 이미지를 오른쪽으로 밀어넣음 */
+  margin-right: 0px;
+  margin-top: 25px;
+}

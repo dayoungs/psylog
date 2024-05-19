@@ -14,6 +14,8 @@
 
    <!--아이콘 적용-->
   <script src="https://kit.fontawesome.com/a1969e7b61.js" crossorigin="anonymous"></script>
+
+  <!--ajax-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
@@ -89,11 +91,14 @@
 </body>
 
 <script>
+  let pwCheck = false;
+
   function check_pw() {
     if (document.getElementById('password').value != '' && document.getElementById('confirm_password').value != '') {
       if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
         document.getElementById('check').innerHTML = '비밀번호가 일치합니다.'
         document.getElementById('check').style.color = 'blue';
+        pwCheck = true;
       } else {
         document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
         document.getElementById('check').style.color = 'red';
@@ -105,6 +110,10 @@
   let submitCheck2 = false;
 
   function valid() {
+    if (!pwCheck) {
+      alert('비밀번호를 다시 설정해주세요');
+      return false;
+    }
     if (submitCheck1 && submitCheck2) { // true 가 되면 회원가입 버튼 동작함
       return true;
     } else {

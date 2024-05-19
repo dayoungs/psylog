@@ -28,7 +28,7 @@
     <div id="input_box">
       <div class="box_title"><b>Edit Profile</b></div>
       <div id="container">
-        <form action="/member/mypage/edit" method="post">
+        <form action="/member/mypage/edit" method="post" onsubmit="return valid()">
           <input type="hidden" th:value="${member.memberNo}" name="memberNo">
           <h4>Name</h4>
           <input id="name" type="text" th:value="${member.memberName}" name="memberName" readonly />
@@ -66,7 +66,7 @@
           <input id="confirm_password" type="password" name="confirmPassword" onchange="check_pw()" required/>&nbsp;<span id="check"></span>
         
           <h4>Email</h4>
-          <input id="email" type="email" th:value="${member.memberEmail}" name="memberEmail" required/>
+          <input id="email" type="email" th:value="${member.memberEmail}" name="memberEmail" readonly/>
 
           <div id="btn">
             <button class="button" id="change_button" type="submit">수정하기</button>
@@ -85,15 +85,26 @@
 </body>
 
 <script>
+  let pwCheck = false;
+
   function check_pw() {
     if (document.getElementById('password').value != '' && document.getElementById('confirm_password').value != '') {
       if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
         document.getElementById('check').innerHTML = '비밀번호가 일치합니다.'
         document.getElementById('check').style.color = 'blue';
+        pwCheck = true;
       } else {
         document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
         document.getElementById('check').style.color = 'red';
       }
     }
   }
+
+  function valid() {
+    if (!pwCheck) {
+      alert('비밀번호를 다시 설정해주세요');
+      return false;
+    }
+  }
+
 </script>

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -57,7 +58,17 @@ public class PostService {
         if (optionalPostEntity.isPresent()){
             PostEntity postEntity = optionalPostEntity.get();
             PostDTO postDTO = PostDTO.toPostDTO(postEntity);
+            return postDTO;
+        } else{
+            return null;
+        }
+    }
 
+    public PostDTO emotionfind(String loginId, LocalDate date){
+        Optional<PostEntity> optionalPostEntity = postRepository.findByPostWriterAndPostDate(loginId, date);
+        if (optionalPostEntity.isPresent()){
+            PostEntity postEntity = optionalPostEntity.get();
+            PostDTO postDTO = PostDTO.toPostDTO(postEntity);
             return postDTO;
         } else{
             return null;
@@ -81,6 +92,14 @@ public class PostService {
         postRepository.save(postEntity);
 
         return findById(postDTO.getPostNo());
+    }
+
+    public void delete(PostDTO postDTO){
+        Optional <PostEntity> oPostEntity = postRepository.findById(postDTO.getPostNo());
+        if (oPostEntity.isPresent()){
+            PostEntity postEntity = oPostEntity.get();
+            postRepository.delete(postEntity);
+        }
     }
 
 
