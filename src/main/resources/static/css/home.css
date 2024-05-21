@@ -70,12 +70,14 @@
 
 .log{
   height:100px;
-  display: flex; /* Flexbox 사용 */
+  width:92%;
+  display: flex; /* Flexbox 사용 hello */
   align-items: center;
   font-family:"IBM Plex Sans KR", sans-serif;
-  margin-bottom: 20px;
-  padding:15px 25px 0px 25px;
+  margin-bottom: 10px;
+  padding:15px 25px 15px 25px;
   background-color:white;
+  border-bottom: 1px solid #bebebe;
 }
 
 #img1{

@@ -36,6 +36,45 @@
     <input id="password" type="password" name="password" required/>
     <i class="fa fa-eye fa-lg" onclick="togglePasswordVisibility()"></i>
   </div>
+    <style>
+      input {
+          border-radius: 10px;
+          width:37%;
+          height:35px;
+          border:solid;
+          border-color: #FF6D3F;
+          font-family: "IBM Plex Sans KR", sans-serif;
+          font-size:16px;
+          padding-left: 10px;
+        }
+
+      .leave_btn{
+         border-radius: 10px;
+         padding:10px 15px 10px 15px;
+         font-size: 17px;
+         font-family: "IBM Plex Sans KR", sans-serif;
+         background-color:#FF6D3F;
+         color:white;
+         border:none;
+         margin-top:15px;
+         margin-bottom: 25px;
+         font-weight: bold;
+        }
+
+        .show{
+          position: relative;
+        }
+
+      .show i{
+          position: absolute;
+          left: 34%;
+          top: 22px;
+          color:black;
+          font-size: 22px;
+        }
+
+
+    </style>
   <!-- 비밀번호 보이기 js -->
   <script>
     function togglePasswordVisibility() {
@@ -53,7 +92,7 @@
       }
     }
   </script>
-    <button class="leave_button" id="leave_button" type="submit" >탈퇴하기</button>
+    <button class="leave_btn" id="leave_button" type="submit" >탈퇴하기</button>
 </div>
 
 <script>
