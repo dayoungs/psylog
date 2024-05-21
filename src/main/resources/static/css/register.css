@@ -51,7 +51,7 @@
 }
 
 #container::-webkit-scrollbar {
-   display: none; /*스크롤바를 숨깁니다.  */
+  display: none; /*스크롤바를 숨깁니다.  */
 }
 
 h4{
