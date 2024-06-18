@@ -1,4 +1,4 @@
-PSYLog 
+##PSYLog <br>
   일기장 속 친구 : 감정 이해와 조언의 동반자
 
 - Source code에 대한 설명
