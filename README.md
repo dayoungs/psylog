@@ -1,5 +1,5 @@
 ## PSYLog
-### 일기장 속 친구 : 감정 이해와 조언의 동반자
+##### 일기장 속 친구 : 감정 이해와 조언의 동반자
 ![initial](https://github.com/dayoungs/psylog/assets/113420912/42984dae-87a5-4cee-8e58-491ee28dfc10)
   <br>
 
