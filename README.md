@@ -12,7 +12,7 @@
 ## 팀원 소개
 |**개발(FE),팀장**|**개발(BE)**|**개발(BE)**|
 |:---:|:---:|:---:|
-|@angelaoh0619|@dayoungs|@zoo0YOON|
+|[@angelaoh0619](https://github.com/angelaoh0619)|[@dayoungs](https://github.com/dayoungs)|[@zoo0YOON](https://github.com/zoo0YOON)|
 |오윤재|신다영|윤주영|
 
 - Source code에 대한 설명<br>
