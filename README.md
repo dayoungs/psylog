@@ -1,11 +1,11 @@
 ## PSYLog
 #### 일기장 속 친구 : 감정 이해와 조언의 동반자
 ![initial](https://github.com/dayoungs/psylog/assets/113420912/42984dae-87a5-4cee-8e58-491ee28dfc10)
-  <br>
+  <br> <br>
 
 ### 프로젝트 소개
 ![initial](https://github.com/dayoungs/psylog/assets/113420912/626c1b76-c8cb-440f-8d64-8c0cef402ac0)
-**PSYLog**는 자신의 감정을 숨기려고 하는 현대인들을 타겟으로 두어 타인에게 쉽게 털어놓을 수 없는 이야기를 아무도 듣거나 보지 않는 곳에 털어놓고, 이에 대해 적합한 공감 및 조언을 제공해주는 서비스입니다.
+**PSYLog**는 자신의 감정을 숨기려고 하는 현대인들을 타겟으로 두어 타인에게 쉽게 털어놓을 수 없는 이야기를 아무도 듣거나 보지 않는 곳에 털어놓고, 이에 대해 적합한 공감 및 조언을 제공해주는 서비스입니다.<br> <br>
 ### 코드 소개
 ```
   📂java                               ▶︎ 백엔드 서버 실행에 필요한 source code의 최상위 폴더
@@ -32,6 +32,7 @@
   ├─🌿application.properties           ▶︎ AI api 사용 위한 엔드포인트, 키 정보 저장
   └─🌿application.yml                  ▶︎spring에서 데이터베이스 사용 위한 정보 저장
 ```
+<br> <br>
 
 ### 실행 방법
   #### ▶ Git clone을 이용하는 방법
@@ -58,7 +59,7 @@
 	```
 	부분을 실행해 주세요. <br>
 5. http://localhost:8081/ 를 통해 웹 화면에 접근할 수 있습니다. 이때, 로컬환경에서 실행되는거다 보니, 회원가입부터 실행하셔야 합니다.
-
+<br>
 
   #### ▶ Web site에 접속하는 방법
   아래의 PSYLog 홈페이지에 접속하여 로그인 해 주세요. 
@@ -66,23 +67,21 @@
   이때, 사용하실 수 있는 테스트 계정의 아이디와 비밀번호는 아래와 같습니다. <br>
   > ID : asdf <br>
   > Password : asdf
-
+<br> <br>
 ### 프로젝트 사용 방법
 1. 테스트 계정 혹은 본인의 계정을 만들어 해당 사이트에 들어갑니다.
+2. 위에 존재하는 일기 작성 탭을 누르시면 일기를 작성하실 수 있습니다.
+3. 일기를 작성하고 등록 버튼을 누르면, 해당 일기가 저장됨과 동시에 감정 분석과 일기에 대한 공감 및 조언을 제공합니다.
+4. 감정 분석 결과와 공감 및 조언 제공을 보고 싶으시다면, 작성한 일기를 클릭하여 아래로 스크롤을 내리면 됩니다. 이때 감정 분석 결과에 쓰이는 API는 Clova Sentiment API 이고, 공감 및 조언 제공에 쓰이는 API는 OpenAI의 GPT-3.5를 따로 Fine tuning한 API입니다. 
 
-### Stacks
+<br> <br>
 
 ### 팀원 소개
 |**개발(FE),팀장**|**개발(BE)**|**개발(BE)**|
 |:---:|:---:|:---:|
 |[@angelaoh0619](https://github.com/angelaoh0619)|[@dayoungs](https://github.com/dayoungs)|[@zoo0YOON](https://github.com/zoo0YOON)|
 |오윤재|신다영|윤주영|
+<br> <br>
 
+### Stacks
 
-
-- How to build
-- How to install
-- How to test
-
-
-[sdfdfsfdsfsddfs.txt](https://github.com/user-attachments/files/15880057/sdfdfsfdsfsddfs.txt)
