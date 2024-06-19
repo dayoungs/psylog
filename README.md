@@ -1,7 +1,15 @@
 ## PSYLog
-##### 일기장 속 친구 : 감정 이해와 조언의 동반자
+#### 일기장 속 친구 : 감정 이해와 조언의 동반자
 ![initial](https://github.com/dayoungs/psylog/assets/113420912/42984dae-87a5-4cee-8e58-491ee28dfc10)
   <br>
+
+## 프로젝트 소개
+
+## 코드 소개
+
+## 실행 방법
+
+## 팀원 소개
 
 - Source code에 대한 설명<br>
   📂java                               ▶︎ 백엔드 서버 실행에 필요한 source code의 최상위 폴더<br>
