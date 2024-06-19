@@ -45,7 +45,18 @@
 
 3. 로컬에서 실행하는거다 보니, Mysql이 이미 설치 되어야 합니다. 설치후, root에다가 psylog db 저장을 위해, application.yml 부분의 password를 본인의 sql password로 설정해주세요.<br>
 
-4. 로컬 계정에서 실행하는 거다 보니, 로그인 과정부터 하나하나 하셔야 합니다. 
+4. PsylogApplication.controller에 들어가서
+   ```
+   @SpringBootApplication
+public class PsylogApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PsylogApplication.class, args);
+	}
+
+}
+```
+부분을 실행해 주세요요
 
   #### ▶ Web site에 접속하는 방법
   아래의 PSYLog 홈페이지에 접속하여 로그인 해 주세요. 
@@ -53,6 +64,11 @@
   이때, 사용하실 수 있는 테스트 계정의 아이디와 비밀번호는 아래와 같습니다. <br>
   > ID : asdf <br>
   > Password : asdf
+
+### 프로젝트 사용 방법
+1. 테스트 계정 혹은 본인의 계정을 만들어 해당 사이트에 들어갑니다.
+
+### Stacks
 
 ### 팀원 소개
 |**개발(FE),팀장**|**개발(BE)**|**개발(BE)**|
