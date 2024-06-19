@@ -6,16 +6,7 @@
 ## 프로젝트 소개
 
 ## 코드 소개
-
-## 실행 방법
-
-## 팀원 소개
-|**개발(FE),팀장**|**개발(BE)**|**개발(BE)**|
-|:---:|:---:|:---:|
-|[@angelaoh0619](https://github.com/angelaoh0619)|[@dayoungs](https://github.com/dayoungs)|[@zoo0YOON](https://github.com/zoo0YOON)|
-|오윤재|신다영|윤주영|
-
-- Source code에 대한 설명<br>
+```
   📂java                               ▶︎ 백엔드 서버 실행에 필요한 source code의 최상위 폴더<br>
   ├─ 📂capston<br>
   │  ├─📂psylog<br>
@@ -39,7 +30,17 @@
   ├─ 📂 templates                      ▶︎ 프론트엔드 html 파일<br>
   ├─🌿application.properties           ▶︎ AI api 사용 위한 엔드포인트, 키 정보 저장<br>
   └─🌿application.yml                  ▶︎spring에서 데이터베이스 사용 위한 정보 저장<br>
-  <br>
+```
+
+## 실행 방법
+
+## 팀원 소개
+|**개발(FE),팀장**|**개발(BE)**|**개발(BE)**|
+|:---:|:---:|:---:|
+|[@angelaoh0619](https://github.com/angelaoh0619)|[@dayoungs](https://github.com/dayoungs)|[@zoo0YOON](https://github.com/zoo0YOON)|
+|오윤재|신다영|윤주영|
+
+
 
 - How to build
 - How to install
