@@ -71,8 +71,12 @@
 ### 프로젝트 사용 방법
 1. 테스트 계정 혹은 본인의 계정을 만들어 해당 사이트에 들어갑니다.
 2. 위에 존재하는 일기 작성 탭을 누르시면 일기를 작성하실 수 있습니다.
+   ![initial](https://github.com/dayoungs/psylog/assets/113420912/bbb08377-7612-42e3-ae93-c439c3492872)
 3. 일기를 작성하고 등록 버튼을 누르면, 해당 일기가 저장됨과 동시에 감정 분석과 일기에 대한 공감 및 조언을 제공합니다.
-4. 감정 분석 결과와 공감 및 조언 제공을 보고 싶으시다면, 작성한 일기를 클릭하여 아래로 스크롤을 내리면 됩니다. 이때 감정 분석 결과에 쓰이는 API는 Clova Sentiment API 이고, 공감 및 조언 제공에 쓰이는 API는 OpenAI의 GPT-3.5를 따로 Fine tuning한 API입니다. 
+   ![initial](https://github.com/dayoungs/psylog/assets/113420912/5fa97df3-a4ed-4cf0-be21-06a3c53aca36)
+4. 감정 분석 결과와 공감 및 조언 제공을 보고 싶으시다면, 작성한 일기를 클릭하여 아래로 스크롤을 내리면 됩니다. 이때 감정 분석 결과에 쓰이는 API는 Clova Sentiment API 이고, 공감 및 조언 제공에 쓰이는 API는 OpenAI의 GPT-3.5를 따로 Fine tuning한 API입니다.
+   ![initial](https://github.com/dayoungs/psylog/assets/113420912/56c3e008-ced9-41b7-8e2f-aba2dac498b9)
+   ![initial](https://github.com/dayoungs/psylog/assets/113420912/54185bae-7282-435a-9e6a-697674ecf2dd)
 
 <br> <br>
 
@@ -81,6 +85,7 @@
 |:---:|:---:|:---:|
 |[@angelaoh0619](https://github.com/angelaoh0619)|[@dayoungs](https://github.com/dayoungs)|[@zoo0YOON](https://github.com/zoo0YOON)|
 |오윤재|신다영|윤주영|
+
 <br> <br>
 
 ### Stacks
