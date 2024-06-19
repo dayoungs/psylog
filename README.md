@@ -10,6 +10,10 @@
 ## 실행 방법
 
 ## 팀원 소개
+|**개발(FE),팀장**|개발(BE)|개발(BE)|
+|:---:|---:|---|
+|@angelaoh0619|@dayoungs|@zoo0YOON|
+|오윤재|신다영|윤주영|
 
 - Source code에 대한 설명<br>
   📂java                               ▶︎ 백엔드 서버 실행에 필요한 source code의 최상위 폴더<br>
