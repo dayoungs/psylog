@@ -34,7 +34,7 @@
 ```
 
 ### 실행 방법
-  ▶ 1. Git clone을 이용하는 방법
+  ▶ #### Git clone을 이용하는 방법
   1. 현재 레파지토리를 클론하여 로컬에서 동작시킬 수 있습니다. <br> ```git clone https://github.com/dayoungs/psylog.git```
         <br>
         
@@ -43,9 +43,16 @@
 [application.properties수정 부분.txt](https://github.com/user-attachments/files/15905988/application.properties.txt)
         <br>
 
-3. 로컬에서 실행하는거다 보니, Mysql이 이미 설치 되어야 합니다. 설치후, root에다가 psylog db 저장을 위해, application.yml 부분의 password를 본인의 sql password로 설정해주세요.
+3. 로컬에서 실행하는거다 보니, Mysql이 이미 설치 되어야 합니다. 설치후, root에다가 psylog db 저장을 위해, application.yml 부분의 password를 본인의 sql password로 설정해주세요.<br>
 
-  ▶ 2. Web site에 접속하는 방법
+4. 로컬 계정에서 실행하는 거다 보니, 로그인 과정부터 하나하나 하셔야 합니다. 
+
+  ▶ #### Web site에 접속하는 방법
+  아래의 PSYLog 홈페이지에 접속하여 로그인 해 주세요. 
+  <br> http://43.203.77.125:8080/ <br>
+  이때, 사용하실 수 있는 테스트 계정의 아이디와 비밀번호는 아래와 같습니다. <br>
+  ID : asdf <br>
+  Password : asdf
 
 ### 팀원 소개
 |**개발(FE),팀장**|**개발(BE)**|**개발(BE)**|
