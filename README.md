@@ -35,15 +35,15 @@
 
 ### 실행 방법
   ▶ 1. Git clone을 이용하는 방법
-        - 현재 레파지토리를 클론하여 로컬에서 동작시킬 수 있습니다.  git clone https://github.com/dayoungs/psylog.git
+  1. 현재 레파지토리를 클론하여 로컬에서 동작시킬 수 있습니다. git clone https://github.com/dayoungs/psylog.git
         <br>
         
-        - 이때, 보안 문제로, OpenAI API의 key와, Clova API key와 secret 부분이 들어가 있지 않습니다. 아래의 txt를 다운받아, clone한 환경에서 application.properties 파일을 수정해주세요.
+2. 이때, 보안 문제로, OpenAI API의 key와, Clova API key와 secret 부분이 들어가 있지 않습니다. 아래의 txt를 다운받아, clone한 환경에서 application.properties 파일을 수정해주세요.
         <br>
 [application.properties수정 부분.txt](https://github.com/user-attachments/files/15905988/application.properties.txt)
         <br>
 
-        - 로컬에서 실행하는거다 보니, Mysql이 이미 설치 되어야 합니다. 설치후, root에다가 psylog db 저장을 위해, application.yml 부분의 password를 본인의 sql password로 설정해주세요.
+3.로컬에서 실행하는거다 보니, Mysql이 이미 설치 되어야 합니다. 설치후, root에다가 psylog db 저장을 위해, application.yml 부분의 password를 본인의 sql password로 설정해주세요.
 
   ▶ 2. Web site에 접속하는 방법
 
